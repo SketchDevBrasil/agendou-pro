@@ -1,0 +1,85 @@
+{
+    "hosting": {
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "/projeto/id-*",
+          "function": "projectViewApi"
+        },
+        {
+          "source": "/",
+          "destination": "/files/index.html"
+        },
+        {
+          "source": "/home",
+          "destination": "/files/home.html"
+        },
+        {
+          "source": "/projeto",
+          "destination": "/files/projeto.html"
+        },
+        {
+          "source": "/projetos",
+          "destination": "/files/projetos.html"
+        },
+        {
+          "source": "/login",
+          "destination": "/files/login.html"
+        },
+        {
+          "source": "/sobre",
+          "destination": "/files/index.html"
+        },
+        {
+          "source": "/politicas",
+          "destination": "/files/politicas.html"
+        },
+        {
+          "source": "/upload",
+          "destination": "/files/upload.html"
+        },
+        {
+          "source": "/cursos",
+          "destination": "/files/cursos.html"
+        },
+        {
+          "source": "/curso-SK-FB",
+          "destination": "/files/curso-SK-FB.html"
+        },
+        {
+          "source": "/sitemap",
+          "destination": "/files/sitemap.xml"
+        },
+        {
+          "source": "/linksApp",
+          "destination": "/json/linksApp.json"
+        },
+        {
+          "source": "/(css|js|json|images|img)/(.*)",
+          "destination": "/$1/$2"
+        },
+        {
+          "source": "/**",
+          "destination": "/files/index.html"
+        }
+      ]
+    },
+    "functions": [
+        {
+          "source": "functions",
+          "codebase": "default",
+          "ignore": [
+            "node_modules",
+            ".git",
+            "firebase-debug.log",
+            "firebase-debug.*.log",
+            "*.local"
+          ]
+        }
+      ]
+  }

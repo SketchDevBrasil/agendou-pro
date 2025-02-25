@@ -1,0 +1,481 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #2c333b;
+  }
+  
+
+
+  /* Menu Bar */
+  /* Header */
+header {
+    background: #2c333b;
+    color: #fff;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #14c555;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+  
+  .nav-links a:hover {
+    color: #14c555;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .btn-login,
+  .btn-signup {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s;
+  }
+  
+  .btn-login {
+    background: transparent;
+    border: 1px solid #14c555;
+  }
+  
+  .btn-signup {
+    background: #14c555;
+  }
+  
+  .btn-login:hover {
+    background: rgba(20, 197, 85, 0.1);
+  }
+  
+  .btn-signup:hover {
+    background: #12a548;
+  }
+  
+  /* Menu Hambúrguer (Mobile) */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    margin: 4px 0;
+    transition: all 0.3s;
+  }
+  
+
+
+ /* Seção Hero */
+.hero {
+    background: url('../images/hero.png') no-repeat center center/cover;
+    color: #fff;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Overlay escuro para melhorar a legibilidade */
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-content .btn-cta {
+    background: #14c555;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+  }
+  
+  .hero-content .btn-cta:hover {
+    background: #12a548;
+  }
+  
+
+
+
+ /* Seção de Funcionalidades */
+.funcionalidades {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #fff;
+}
+
+.funcionalidades h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2c333b;
+}
+
+.funcionalidades .subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 4rem;
+}
+
+.funcionalidades-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.funcionalidade {
+  background: #f4f4f4;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.funcionalidade:hover {
+  transform: translateY(-10px);
+}
+
+.funcionalidade i {
+  font-size: 2rem;
+  color: #14c555;
+  margin-bottom: 1rem;
+}
+
+.funcionalidade h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #2c333b;
+}
+
+.funcionalidade p {
+  font-size: 1rem;
+  color: #666;
+}
+
+
+/* Seção de Benefícios */
+.benefits {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: #f9f9f9;
+  }
+  
+  .benefits h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #2c333b;
+  }
+  
+  .benefits .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 4rem;
+  }
+  
+  .benefits-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .benefit {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .benefit:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .benefit .icon-container {
+    width: 80px;
+    height: 80px;
+    background: #14c555;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .benefit .icon-container i {
+    font-size: 2rem;
+    color: #fff;
+  }
+  
+  .benefit h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2c333b;
+  }
+  
+  .benefit p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+
+
+    .menu-toggle {
+        display: flex;
+      }
+    
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #2c333b;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+    
+      .nav-links.active {
+        transform: translateX(0);
+      }
+    
+      .buttons {
+        display: none;
+      }
+
+
+
+  .funcionalidade {
+    width: 100%;
+  }
+  .benefit {
+    width: 100%;
+  }
+}
+  
+  /* Seção de Planos */
+  .pricing {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: #fff;
+  }
+  
+  .pricing h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #2c333b;
+  }
+  
+  .pricing-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .plan {
+    background: #f4f4f4;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .plan:hover {
+    transform: translateY(-10px);
+  }
+  
+  .plan h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2c333b;
+  }
+  
+  .plan .price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #14c555;
+    margin-bottom: 1rem;
+  }
+  
+  .plan ul {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+  
+  .plan ul li {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+  
+  .plan .btn-plan {
+    background: #14c555;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+  }
+  
+  .plan .btn-plan:hover {
+    background: #12a548;
+  }
+  
+  /* Seção de Contato */
+  .contact {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: #f4f4f4;
+  }
+  
+  .contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #2c333b;
+  }
+  
+  .contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .contact input,
+  .contact textarea {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .contact button {
+    background: #14c555;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .contact button:hover {
+    background: #12a548;
+  }
+  
+  /* Rodapé */
+  footer {
+    background: #2c333b;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    header .nav-links {
+      display: none;
+    }
+  
+    .hero-content h1 {
+      font-size: 2rem;
+    }
+  
+    .hero-content p {
+      font-size: 1rem;
+    }
+  
+    .feature,
+    .plan {
+      width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+      }
+    
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+  }
