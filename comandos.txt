@@ -29,6 +29,7 @@ app.use("/privado", (req, res) => {
   res.status(403).send("Acesso negado.");
 });
 
+
 // Rota padrão
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public/index.html"));
