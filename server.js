@@ -18,13 +18,12 @@ app.get("/", (req, res) => {
 });
 
 // Iniciar o servidor use node server.js
-//app.listen(PORT, '0.0.0.0', () => {
-  //console.log(`Servidor rodando em http://localhost:${PORT}`);
-  //console.log(`Acessível em http://192.168.0.109:${PORT}`);
-//});
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Acessível em http://192.168.0.109:${PORT}`);
+});
 
 // para Iniciar o servidor em localhost substitua o cod anterior por este
-app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
-  });
+//app.listen(PORT, () => {
+    //console.log(`Servidor rodando em http://localhost:${PORT}`);
+  //});
   

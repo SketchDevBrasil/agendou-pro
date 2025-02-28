@@ -36,34 +36,66 @@ let isLoginMode = true;
 let countdownInterval; // Variável para o intervalo do contador
 let recaptchaVerifier; // Variável global para o RecaptchaVerifier
 
+// Gerenciador do ID do container do reCAPTCHA
+let recaptchaContainerId = "recaptcha-container";
+
+// Função para gerar um ID único para o container do reCAPTCHA
+function generateUniqueId() {
+  return "recaptcha-container-" + Math.random().toString(36).substr(2, 9);
+}
+
+// Função para limpar o reCAPTCHA e recriar o container com um novo ID
+function clearRecaptcha() {
+  if (recaptchaVerifier) {
+    recaptchaVerifier.clear();
+    recaptchaVerifier = null;
+  }
+  // Remove o container atual (se existir)
+  const container = document.getElementById(recaptchaContainerId);
+  if (container && container.parentNode) {
+    container.parentNode.removeChild(container);
+  }
+  // Cria um novo container e o adiciona ao DOM (nesse exemplo, ao final do body)
+  const newContainer = document.createElement("div");
+  recaptchaContainerId = generateUniqueId();
+  newContainer.id = recaptchaContainerId;
+  document.body.appendChild(newContainer);
+}
+
+// Função para inicializar o reCAPTCHA
+function initializeRecaptcha() {
+  if (!recaptchaVerifier) {
+    recaptchaVerifier = new RecaptchaVerifier(
+      recaptchaContainerId, // Usa o ID atualizado do container
+      {
+        size: "invisible",
+        callback: (response) => {
+          console.log("reCAPTCHA resolvido:", response);
+        },
+      },
+      auth
+    );
+  }
+}
+
 // Função para garantir que o sinal "+" não seja apagado
 function enforcePlusSign(input) {
-  // Verifica se o valor começa com "+"
   if (!input.value.startsWith("+")) {
-    // Se não começar, restaura o valor anterior ou define como "+"
     input.value = "+" + input.value.replace(/[^0-9]/g, "");
   }
-
-  // Impede que o usuário apague o "+"
   input.addEventListener("keydown", (e) => {
-    const selectionStart = input.selectionStart; // Posição do cursor
-
-    // Se o cursor estiver no início e o usuário tentar apagar o "+", impede a ação
+    const selectionStart = input.selectionStart;
     if (selectionStart === 1 && e.key === "Backspace") {
       e.preventDefault();
     }
-
-    // Se o cursor estiver no início e o usuário tentar digitar algo que não seja "+", impede a ação
     if (selectionStart === 0 && e.key !== "+") {
       e.preventDefault();
     }
   });
-
-  // Formata o número de telefone enquanto o usuário digita
   input.addEventListener("input", () => {
-    let value = input.value.replace(/\D/g, ""); // Remove tudo que não for número
+    let value = input.value.replace(/\D/g, "");
     if (value.length > 0) {
-      value = `+${value}`; // Garante que o valor comece com "+"
+      value = `+${value}`;
     }
     input.value = value;
   });
@@ -75,8 +107,6 @@ async function detectCountryCode() {
     const response = await fetch("https://ipapi.co/json/");
     const data = await response.json();
     const countryCode = data.country_code;
-
-    // Mapeamento de códigos de país para códigos de telefone
     const countryCodes = {
       BR: "+55", US: "+1", GB: "+44", DE: "+49", FR: "+33", IT: "+39", ES: "+34", PT: "+351",
       HU: "+36", UA: "+380", RU: "+7", IN: "+91", CN: "+86", JP: "+81", KR: "+82", ID: "+62",
@@ -85,58 +115,26 @@ async function detectCountryCode() {
       KE: "+254", GH: "+233", DZ: "+213", MA: "+212", ET: "+251", SN: "+221", TZ: "+255",
       AU: "+61", NZ: "+64"
     };
-
-    // Define o código do país com base na localização do usuário
-    const defaultCode = "+55"; // Código padrão (Brasil)
+    const defaultCode = "+55";
     const detectedCode = countryCodes[countryCode] || defaultCode;
-
-    // Insere o código do país no campo de telefone
     const phoneInput = document.getElementById("phone");
     phoneInput.value = detectedCode;
   } catch (error) {
     console.error("Erro ao detectar código do país:", error);
-    // Define o código padrão em caso de erro
     const phoneInput = document.getElementById("phone");
     phoneInput.value = "+55";
   }
 }
 
-// Função para inicializar o reCAPTCHA
-function initializeRecaptcha() {
-  if (!recaptchaVerifier) {
-    recaptchaVerifier = new RecaptchaVerifier(
-      "recaptcha-container",
-      {
-        size: "invisible", // Tamanho invisível
-        callback: (response) => {
-          // Callback chamado quando o reCAPTCHA é resolvido
-          console.log("reCAPTCHA resolvido:", response);
-        },
-      },
-      auth
-    );
-  }
-}
-
-// Função para limpar o reCAPTCHA
-function clearRecaptcha() {
-  if (recaptchaVerifier) {
-    recaptchaVerifier.clear(); // Limpa a instância do reCAPTCHA
-    recaptchaVerifier = null; // Remove a referência
-  }
-}
-
-// Função para iniciar o contador regressivo
+// Função para iniciar o contador regressivo (ex.: 60 segundos)
 function startCountdown() {
-  let timeLeft = 60; // Tempo em segundos
+  let timeLeft = 60;
   const countdownElement = document.getElementById("countdown");
-
-  // Atualiza o contador a cada segundo
   countdownInterval = setInterval(() => {
     if (timeLeft <= 0) {
-      clearInterval(countdownInterval); // Para o contador
+      clearInterval(countdownInterval);
       countdownElement.textContent = "Tempo esgotado!";
-      document.getElementById("resend-verification").style.display = "inline-block"; // Mostra o botão de reenviar
+      document.getElementById("resend-verification").style.display = "inline-block";
     } else {
       countdownElement.textContent = `Tempo restante: ${timeLeft} segundos`;
       timeLeft--;
@@ -144,47 +142,12 @@ function startCountdown() {
   }, 1000);
 }
 
-// Função para reenviar o código de verificação
-window.resendVerificationCode = function () {
-  const phoneInput = document.getElementById("phone").value;
-
-  if (!phoneInput) {
-    document.getElementById("error-message").innerText =
-      "Por favor, preencha o número de celular.";
-    return;
-  }
-
-  const phoneNumber = phoneInput.replace(/\s/g, ""); // Remove espaços
-
-  // Verifica se o RecaptchaVerifier já foi inicializado
-  if (!recaptchaVerifier) {
-    initializeRecaptcha(); // Inicializa o reCAPTCHA se ainda não foi feito
-  }
-
-  signInWithPhoneNumber(auth, phoneNumber, recaptchaVerifier)
-    .then((confirmationResult) => {
-      window.confirmationResult = confirmationResult;
-      openGenericModal(
-        "Código Reenviado",
-        "Um novo código de verificação foi enviado para seu celular."
-      );
-      startCountdown(); // Reinicia o contador regressivo
-      document.getElementById("resend-verification").style.display = "none"; // Oculta o botão de reenviar
-    })
-    .catch((error) => {
-      document.getElementById("error-message").innerText =
-        "Erro ao reenviar código: " + error.message;
-      clearRecaptcha(); // Limpa o reCAPTCHA em caso de erro
-    });
-};
-
-// Função para abrir o modal
+// Funções para abrir e fechar o modal
 window.openModal = function () {
   const modal = document.getElementById("auth-modal");
   modal.style.display = "flex";
 };
 
-// Função para fechar o modal
 window.closeModal = function () {
   const modal = document.getElementById("auth-modal");
   modal.style.display = "none";
@@ -205,7 +168,6 @@ window.toggleMode = function () {
     toggleText.innerHTML = 'Não tem uma conta? <span>Clique aqui para Criar.</span>';
     modalTitle.textContent = "Login";
   }
-
   isLoginMode = !isLoginMode;
 };
 
@@ -213,14 +175,11 @@ window.toggleMode = function () {
 window.handleAuth = async function () {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-
   if (!email || !password) {
     document.getElementById("error-message").innerText = "Por favor, preencha todos os campos.";
     return;
   }
-
   if (isLoginMode) {
-    // Lógica de login
     try {
       await signInWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
@@ -230,12 +189,11 @@ window.handleAuth = async function () {
         return;
       }
       updateUI(user);
-      window.location.href = "/admin"; // Redireciona para a página de admin
+      window.location.href = "/admin";
     } catch (error) {
       document.getElementById("error-message").innerText = "Erro ao fazer login: " + error.message;
     }
   } else {
-    // Lógica de registro
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
@@ -254,7 +212,6 @@ window.handleAuth = async function () {
 window.togglePassword = function () {
   const passwordInput = document.getElementById("password");
   const toggleIcon = document.getElementById("toggle-password");
-
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
     toggleIcon.src = "images/eye-open.png";
@@ -272,7 +229,7 @@ window.loginWithGoogle = async function () {
     const user = result.user;
     updateUI(user);
     openGenericModal("Login com Google", "Login realizado com sucesso!");
-    window.location.href = "/admin"; // Redireciona para a página de admin
+    window.location.href = "/admin";
   } catch (error) {
     document.getElementById("error-message").innerText = "Erro: " + error.message;
   }
@@ -281,35 +238,32 @@ window.loginWithGoogle = async function () {
 // Login com Celular
 window.loginWithPhone = function () {
   const phoneInput = document.getElementById("phone").value;
-
   if (!phoneInput) {
     document.getElementById("error-message").innerText =
       "Por favor, preencha o número de celular.";
     return;
   }
-
-  const phoneNumber = phoneInput.replace(/\s/g, ""); // Remove espaços
-
-  // Verifica se o RecaptchaVerifier já foi inicializado
-  if (!recaptchaVerifier) {
-    initializeRecaptcha(); // Inicializa o reCAPTCHA se ainda não foi feito
-  }
-
+  const phoneNumber = phoneInput.replace(/\s/g, "");
+  // Limpa e recria o reCAPTCHA antes de cada solicitação
+  clearRecaptcha();
+  initializeRecaptcha();
   signInWithPhoneNumber(auth, phoneNumber, recaptchaVerifier)
     .then((confirmationResult) => {
       window.confirmationResult = confirmationResult;
-      openGenericModal(
-        "Código Enviado",
-        "Um código de verificação foi enviado para seu celular."
-      );
+      openGenericModal("Código Enviado", "Um código de verificação foi enviado para seu celular.");
       document.getElementById("otp-section").style.display = "block";
-      startCountdown(); // Inicia o contador regressivo
-      document.getElementById("resend-verification").style.display = "none"; // Oculta o botão de reenviar inicialmente
+      startCountdown();
+      document.getElementById("resend-verification").style.display = "none";
     })
     .catch((error) => {
-      document.getElementById("error-message").innerText =
-        "Erro ao enviar código: " + error.message;
-      clearRecaptcha(); // Limpa o reCAPTCHA em caso de erro
+      if (error.code === "auth/too-many-requests") {
+        document.getElementById("error-message").innerText =
+          "Muitas solicitações. Aguarde alguns minutos antes de tentar novamente.";
+      } else {
+        document.getElementById("error-message").innerText =
+          "Erro ao enviar código: " + error.message;
+      }
+      clearRecaptcha();
     });
 };
 
@@ -317,8 +271,7 @@ window.loginWithPhone = function () {
 window.verifyOTP = function () {
   const otp = document.getElementById("otp").value;
   if (!otp) {
-    document.getElementById("error-message").innerText =
-      "Por favor, insira o código de verificação.";
+    document.getElementById("error-message").innerText = "Por favor, insira o código de verificação.";
     return;
   }
   window.confirmationResult
@@ -328,57 +281,79 @@ window.verifyOTP = function () {
       openGenericModal("Login Bem-sucedido", "Login realizado com sucesso!");
       clearInterval(countdownInterval);
       updateUI(user);
-      window.location.href = "/admin"; // Redireciona para a página de admin
+      window.location.href = "/admin";
     })
     .catch((error) => {
-      document.getElementById("error-message").innerText =
-        "Código inválido: " + error.message;
+      document.getElementById("error-message").innerText = "Código inválido: " + error.message;
+    });
+};
+
+// Reenviar código de verificação
+window.resendVerificationCode = function () {
+  const phoneInput = document.getElementById("phone").value;
+  if (!phoneInput) {
+    document.getElementById("error-message").innerText =
+      "Por favor, preencha o número de celular.";
+    return;
+  }
+  const phoneNumber = phoneInput.replace(/\s/g, "");
+  clearRecaptcha();
+  initializeRecaptcha();
+  signInWithPhoneNumber(auth, phoneNumber, recaptchaVerifier)
+    .then((confirmationResult) => {
+      window.confirmationResult = confirmationResult;
+      openGenericModal("Código Reenviado", "Um novo código de verificação foi enviado para seu celular.");
+      startCountdown();
+      document.getElementById("resend-verification").style.display = "none";
+    })
+    .catch((error) => {
+      if (error.code === "auth/too-many-requests") {
+        document.getElementById("error-message").innerText =
+          "Muitas solicitações. Aguarde alguns minutos antes de tentar novamente.";
+      } else {
+        document.getElementById("error-message").innerText =
+          "Erro ao reenviar código: " + error.message;
+      }
+      clearRecaptcha();
     });
 };
 
 // Atualizar UI após login
 function updateUI(user) {
   if (user) {
-    // Ocultar o modal de login
     closeModal();
-    // Atualizar a interface do usuário logado (se necessário)
     console.log("Usuário logado:", user);
   } else {
     console.log("Nenhum usuário logado.");
   }
 }
 
-// Inicialização
+// Inicialização ao carregar a página
 document.addEventListener("DOMContentLoaded", () => {
-  // Configurar o modal
   const modal = document.getElementById("auth-modal");
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
       closeModal();
     }
   });
-
-  // Garantir que o sinal "+" esteja sempre presente no campo de telefone
   const phoneInput = document.getElementById("phone");
   enforcePlusSign(phoneInput);
-
-  // Detectar o código do país ao carregar a página
   detectCountryCode();
 });
 
-// Função para abrir um modal genérico
+// Funções para abrir e fechar um modal genérico
 window.openGenericModal = function (title, message) {
   const modal = document.getElementById("generic-modal");
   const modalTitle = document.getElementById("modal-title");
   const modalMessage = document.getElementById("modal-message");
-
   modalTitle.textContent = title;
   modalMessage.textContent = message;
   modal.style.display = "block";
 };
 
-// Função para fechar um modal genérico
 window.closeGenericModal = function () {
   const modal = document.getElementById("generic-modal");
   modal.style.display = "none";
 };
+
+

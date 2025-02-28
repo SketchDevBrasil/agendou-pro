@@ -17,44 +17,12 @@
         "destination": "/admin/index.html"
       },
       {
-        "source": "/projeto",
-        "destination": "/files/projeto.html"
-      },
-      {
-        "source": "/projetos",
-        "destination": "/files/projetos.html"
-      },
-      {
-        "source": "/login",
-        "destination": "/files/login.html"
-      },
-      {
-        "source": "/sobre",
-        "destination": "/files/index.html"
-      },
-      {
         "source": "/politicas",
-        "destination": "/files/politicas.html"
-      },
-      {
-        "source": "/upload",
-        "destination": "/files/upload.html"
-      },
-      {
-        "source": "/cursos",
-        "destination": "/files/cursos.html"
-      },
-      {
-        "source": "/curso-SK-FB",
-        "destination": "/files/curso-SK-FB.html"
+        "destination": "/politicas.html"
       },
       {
         "source": "/sitemap",
-        "destination": "/files/sitemap.xml"
-      },
-      {
-        "source": "/linksApp",
-        "destination": "/json/linksApp.json"
+        "destination": "/sitemap.xml"
       },
       {
         "source": "/(css|js|json|images|img)/(.*)",
@@ -62,7 +30,7 @@
       },
       {
         "source": "/**",
-        "destination": "/files/index.html"
+        "destination": "/public/index.html"
       }
     ]
   },

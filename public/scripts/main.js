@@ -36,3 +36,24 @@ cards.forEach((card) => {
   observer.observe(card);
 });
 
+function showEmpresas() {
+  document.querySelectorAll('.empresa').forEach(el => el.style.display = 'block');
+  document.querySelectorAll('.usuario').forEach(el => el.style.display = 'none');
+  document.getElementById('btn-empresas').classList.add('active');
+  document.getElementById('btn-usuarios').classList.remove('active');
+  document.getElementById('hero-title').textContent = "Agendamento Online Simples e Eficiente";
+  document.getElementById('hero-subtitle').textContent = "Gerencie seus agendamentos, otimize seu tempo e aumente sua produtividade.";
+  document.getElementById('funcionalidades-subtitle').textContent = "Tudo o que você precisa para gerenciar seus agendamentos de forma eficiente.";
+  document.getElementById('benefits-subtitle').textContent = "Descubra como o Agendou pode transformar a gestão do seu negócio.";
+}
+
+function showUsuarios() {
+  document.querySelectorAll('.usuario').forEach(el => el.style.display = 'block');
+  document.querySelectorAll('.empresa').forEach(el => el.style.display = 'none');
+  document.getElementById('btn-usuarios').classList.add('active');
+  document.getElementById('btn-empresas').classList.remove('active');
+  document.getElementById('hero-title').textContent = "Agendamento Online Simples e Eficiente";
+  document.getElementById('hero-subtitle').textContent = "Encontre profissionais e agende serviços de forma rápida e fácil.";
+  document.getElementById('funcionalidades-subtitle').textContent = "Tudo o que você precisa para agendar serviços de forma eficiente.";
+  document.getElementById('benefits-subtitle').textContent = "Descubra como o Agendou pode facilitar sua vida.";
+}
