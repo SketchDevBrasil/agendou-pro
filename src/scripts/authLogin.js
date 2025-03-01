@@ -1,6 +1,7 @@
 // Importações do Firebase
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import {
+
+import { initializeApp } from 'firebase/app';
+import { 
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -13,9 +14,11 @@ import {
   signInWithPhoneNumber,
   GoogleAuthProvider,
   signInWithPopup,
-} from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+ } from 'firebase/auth';
 
-// Configuração do Firebase
+
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDWb3xpY7Ft7dIkJmQvJTQIK2dIducFHWA",
   authDomain: "agendou-pro.firebaseapp.com",
@@ -24,8 +27,10 @@ const firebaseConfig = {
   storageBucket: "agendou-pro.firebasestorage.app",
   messagingSenderId: "251289108784",
   appId: "1:251289108784:web:f89f926e001932cd9c48f5",
-  measurementId: "G-0Z7Z81PLYH",
+  measurementId: "G-0Z7Z81PLYH"
 };
+
+
 
 // Inicializa Firebase
 const app = initializeApp(firebaseConfig);
@@ -349,3 +354,12 @@ window.closeGenericModal = function () {
 };
 
 
+window.openModal = function () {
+  const modal = document.getElementById("auth-modal");
+  modal.style.display = "block";
+};
+
+window.closeModal = function () {
+  const modal = document.getElementById("auth-modal");
+  modal.style.display = "none";
+};
