@@ -1,6 +1,5 @@
 import '../styles/index.css'; // Importa o CSS
-import { auth } from './firebase-config';
-import { handleAuth, toggleMode, togglePassword, loginWithGoogle, loginWithPhone, verifyOTP, resendVerificationCode } from './authIndex';
+import { auth } from './firebase-config.js'; // Firebase config
+import { handleAuth, toggleMode, togglePassword, loginWithGoogle, loginWithPhone, verifyOTP, resendVerificationCode } from './scripts/authIndex.js';
 
-// Código principal
 console.log('Aplicação iniciada!');

@@ -1,24 +1,29 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const Dotenv = require('dotenv-webpack');
+import path from 'path';
+import { fileURLToPath } from 'url';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import Dotenv from 'dotenv-webpack';
 
-module.exports = {
-  mode: 'development', // Altere para 'production' ao fazer o build para produção
-  entry: './src/index.js', // Ponto de entrada do JavaScript
+// Corrige __dirname no ESModules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default {
+  mode: 'development',
+  entry: './src/index.js',
   output: {
-    filename: 'bundle.js', // Nome do arquivo de saída
-    path: path.resolve(__dirname, 'dist'), // Pasta de saída
-    clean: true, // Limpa a pasta dist antes de cada build
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   devServer: {
-    static: './dist', // Pasta para servir arquivos estáticos
-    hot: true, // Ativa o Hot Module Replacement (HMR)
+    static: './dist',
+    hot: true,
   },
   module: {
     rules: [
       {
-        test: /\.js$/, // Processa arquivos JavaScript
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -28,22 +33,22 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/, // Processa arquivos CSS
+        test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i, // Processa imagens
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html', // Usa o arquivo HTML como template
+      template: './public/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'styles/[name].css', // Gera arquivos CSS na pasta dist/styles/
+      filename: 'styles/[name].css',
     }),
-    new Dotenv(), // Carrega variáveis de ambiente do arquivo .env
+    new Dotenv(),
   ],
 };

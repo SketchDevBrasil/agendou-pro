@@ -8,6 +8,11 @@ firebase deploy --only functions:giphyQueryApi
 
 para testar localmente
 
+com webpack rm -rf dist .webpack-cache
+npm start
+
+
+
 No diretório do seu projeto, execute:
 
 npm init -y
