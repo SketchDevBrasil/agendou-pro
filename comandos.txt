@@ -10,8 +10,19 @@ para testar localmente
 
 com webpack rm -rf dist .webpack-cache
 npm start
+npm run build
 
+# Limpar a pasta node_modules
+Remove-Item -Recurse -Force node_modules
 
+# Remover package-lock.json
+Remove-Item package-lock.json
+
+# Reinstalar dependências
+npm install
+
+# Executar o build
+npm run build
 
 No diretório do seu projeto, execute:
 
