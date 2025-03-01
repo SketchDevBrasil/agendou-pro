@@ -67,7 +67,6 @@ firebase deploy --only hosting
 git add .
 git commit -m "nova atualizacão ..."
 git push --force origin main
-firebase deploy --only hosting
 
 
 Antes de redeployar, teste localmente para confirmar que os arquivos e rotas estão configurados corretamente:

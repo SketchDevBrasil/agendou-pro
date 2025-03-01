@@ -143,7 +143,6 @@ function startCountdown() {
 }
 
 
-
 // Alternar entre Login e Registro
 window.toggleMode = function () {
   const authButton = document.getElementById("auth-button");
@@ -180,7 +179,7 @@ window.handleAuth = async function () {
         return;
       }
       updateUI(user);
-      window.location.href = "/admin";
+      
     } catch (error) {
       document.getElementById("error-message").innerText = "Erro ao fazer login: " + error.message;
     }
@@ -200,6 +199,7 @@ window.handleAuth = async function () {
 };
 
 
+
 // Alternar visibilidade da senha
 window.togglePassword = function () {
   const passwordInput = document.getElementById("password");
@@ -212,7 +212,6 @@ window.togglePassword = function () {
     toggleIcon.src = "images/eye-closed.png";
   }
 };
-
 
 
 // Login com Google
@@ -228,8 +227,6 @@ window.loginWithGoogle = async function () {
     document.getElementById("error-message").innerText = "Erro: " + error.message;
   }
 };
-
-
 
 // Login com Celular
 window.loginWithPhone = function () {
@@ -277,7 +274,6 @@ window.verifyOTP = function () {
       openGenericModal("Login Bem-sucedido", "Login realizado com sucesso!");
       clearInterval(countdownInterval);
       updateUI(user);
-      
     })
     .catch((error) => {
       document.getElementById("error-message").innerText = "Código inválido: " + error.message;
@@ -317,8 +313,8 @@ window.resendVerificationCode = function () {
 // Atualizar UI após login
 function updateUI(user) {
   if (user) {
-    window.location.href = "/admin";
     console.log("Usuário logado:", user);
+    window.location.href = "/admin";
   } else {
     console.log("Nenhum usuário logado.");
   }

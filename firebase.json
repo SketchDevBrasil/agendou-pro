@@ -9,12 +9,16 @@
     ],
     "rewrites": [
       {
-        "source": "/projeto/id-*",
-        "function": "projectViewApi"
+        "source": "/admin",
+        "function": "LoginAdmin"
       },
       {
         "source": "/admin",
         "destination": "/admin/index.html"
+      },
+      {
+        "source": "/login",
+        "destination": "/login.html"
       },
       {
         "source": "/politicas",

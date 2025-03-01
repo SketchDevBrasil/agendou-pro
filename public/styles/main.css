@@ -693,14 +693,7 @@ nav {
 }
 
 
-/* Rodapé */
-footer {
-  background: #2c333b;
-  color: #fff;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-}
+
 
 /* Responsividade */
 @media (max-width: 768px) {
@@ -937,7 +930,7 @@ h2 {
 #generic-modal {
   display: none;
   position: fixed;
-  z-index: 1000;
+  /* Reduza o z-index para ficar abaixo do header */
   left: 0;
   top: 0;
   width: 100%;
@@ -945,7 +938,10 @@ h2 {
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
+  z-index: 1002;
 }
+
+
 
 #generic-modal .modal-content {
   background-color: #fff;
@@ -989,7 +985,7 @@ h2 {
 }
 
 
-/* Seção faq */
+
 /* Seção FAQ */
 .faq {
   width: 100%;
@@ -1045,3 +1041,23 @@ h2 {
 }
 
 
+/* Rodapé */
+.footer a {
+  width: 100%;
+  height: auto;
+  color: #fff;
+  text-decoration: none;
+  font-size: 17px;
+  transition: color 0.3s;
+}
+
+
+.politicas-link {
+  color: #14c555; /* Cor azul */
+  text-decoration: underline; /* Sublinhado */
+  transition: color 0.3s ease; /* Transição suave de cor */
+}
+
+.politicas-link:hover {
+  color: #6cf3d5; /* Cor azul mais escura ao passar o mouse */
+}

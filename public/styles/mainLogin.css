@@ -1,0 +1,305 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos gerais */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Menu Bar */
+header {
+    background: #2c333b;
+    color: #fff;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    /* Aumente o z-index para garantir que fique acima */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logoAgendou {
+    width: 170px;
+    height: auto;
+    object-fit: contain;
+    /* Mantém a proporção dentro do espaço */
+}
+
+/* Estilo do botão de login */
+.btn-login {
+    width: 170px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #14c555;
+    margin: 0;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 25px;
+    font-size: 18px;
+    transition: background 0.7s;
+    background: transparent;
+    border: 2px solid #14c555;
+}
+
+.btn-login:hover {
+    background: #14c555;
+    color: #ffffff;
+}
+
+/* Exibe o ícone em telas menores */
+@media (max-width: 768px) {
+    .btn-login {
+        width: 77px;
+        font-size: 16px;
+    }
+
+    .logoAgendou {
+        width: 130px;
+        height: auto;
+        object-fit: contain;
+        /* Mantém a proporção dentro do espaço */
+    }
+}
+
+/* Modal de Login */
+#auth-modal.modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    /* Ocupa pelo menos 100% da altura da tela */
+    padding: 20px;
+    background-color: #f5f5f5;
+    /* Cor de fundo da página */
+    z-index: 1000;
+    /* Mantenha ou ajuste conforme necessário */
+}
+
+
+.HeaderLogin {
+    background: transparent;
+    position: sticky;
+    top: 0;
+    border-radius: 10px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+}
+
+.close {
+    color: #14c555;
+    width: 25px;
+    height: 25px;
+    margin-left: 50px;
+}
+
+.modal-content .close:hover {
+    color: #333;
+}
+
+/* Estilo do formulário */
+.input-container {
+    position: relative;
+    margin-bottom: 7px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    margin-bottom: 7px;
+}
+
+.input-field:focus {
+    border-color: #14c555;
+}
+
+.icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.btn {
+    background-color: #14c555;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btnGoogle {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    margin-bottom: 7px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    transition: background-color 0.3s ease;
+}
+
+.btnGoogle:hover {
+    background-color: #f1f1f1;
+}
+
+#toggle-text,
+#forgot-password-text,
+#resend-verification {
+    color: #007bff;
+    cursor: pointer;
+    text-align: center;
+    margin: 10px 0;
+    transition: color 0.3s ease;
+}
+
+#toggle-text:hover,
+#forgot-password-text:hover {
+    color: #0056b3;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 7px;
+}
+
+/* Estilo do modal genérico */
+#generic-modal {
+    display: none;
+    position: fixed;
+    /* Reduza o z-index para ficar abaixo do header */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1002;
+}
+
+
+
+#generic-modal .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+
+#generic-modal .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#generic-modal .close:hover {
+    color: #333;
+}
+
+
+
+#generic-modal .btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+#generic-modal .btn:hover {
+    background-color: #0056b3;
+}
+
+
+/* Rodapé */
+footer {
+    background: #2c333b;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+
+
+/* Rodapé */
+.footer a {
+    width: 100%;
+    height: auto;
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+    transition: color 0.3s;
+  }
+  
+  
+  .politicas-link {
+    color: #14c555; /* Cor azul */
+    text-decoration: underline; /* Sublinhado */
+    transition: color 0.3s ease; /* Transição suave de cor */
+  }
+  
+  .politicas-link:hover {
+    color: #6cf3d5; /* Cor azul mais escura ao passar o mouse */
+  }
