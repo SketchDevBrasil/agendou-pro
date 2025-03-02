@@ -6,6 +6,10 @@ firebase deploy --only functions:queryProjectsApi
 firebase deploy --only functions:projectViewApi
 firebase deploy --only functions:giphyQueryApi
 
+para instalar dependencias do webpack 
+npm install --save-dev webpack webpack-cli webpack-dev-server babel-loader @babel/core @babel/preset-env html-loader mini-css-extract-plugin dotenv-webpack
+
+
 para testar localmente
 
 com webpack rm -rf dist .webpack-cache

@@ -14,7 +14,7 @@ app.use("/privado", (req, res) => {
 
 // Rota padrão
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/index.html"));
+  res.sendFile(path.join(__dirname, "src/index.html"));
 });
 
 // Iniciar o servidor use node server.js

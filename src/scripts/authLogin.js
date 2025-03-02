@@ -204,7 +204,6 @@ window.handleAuth = async function () {
 };
 
 
-
 // Alternar visibilidade da senha
 window.togglePassword = function () {
   const passwordInput = document.getElementById("password");
@@ -354,12 +353,3 @@ window.closeGenericModal = function () {
 };
 
 
-window.openModal = function () {
-  const modal = document.getElementById("auth-modal");
-  modal.style.display = "block";
-};
-
-window.closeModal = function () {
-  const modal = document.getElementById("auth-modal");
-  modal.style.display = "none";
-};

@@ -267,6 +267,7 @@ window.loginWithPhone = function () {
     });
 };
 
+
 // Verificar OTP
 window.verifyOTP = function () {
   const otp = document.getElementById("otp").value;
@@ -287,6 +288,7 @@ window.verifyOTP = function () {
       document.getElementById("error-message").innerText = "Código inválido: " + error.message;
     });
 };
+
 
 // Reenviar código de verificação
 window.resendVerificationCode = function () {
@@ -318,6 +320,7 @@ window.resendVerificationCode = function () {
     });
 };
 
+
 // Atualizar UI após login
 function updateUI(user) {
   if (user) {
@@ -327,6 +330,7 @@ function updateUI(user) {
     console.log("Nenhum usuário logado.");
   }
 }
+
 
 // Inicialização ao carregar a página
 document.addEventListener("DOMContentLoaded", () => {
@@ -341,6 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
   detectCountryCode();
 });
 
+
 // Funções para abrir e fechar um modal genérico
 window.openGenericModal = function (title, message) {
   const modal = document.getElementById("generic-modal");
@@ -351,9 +356,20 @@ window.openGenericModal = function (title, message) {
   modal.style.display = "block";
 };
 
+
 window.closeGenericModal = function () {
   const modal = document.getElementById("generic-modal");
   modal.style.display = "none";
 };
 
 
+window.openModal = function () {
+  const modal = document.getElementById("auth-modal");
+  modal.style.display = "block";
+};
+
+
+window.closeModal = function () {
+  const modal = document.getElementById("auth-modal");
+  modal.style.display = "none";
+};

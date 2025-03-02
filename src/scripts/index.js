@@ -9,9 +9,9 @@ mobileMenu.addEventListener('click', () => {
 
   // Alterna entre as imagens do ícone de hambúrguer e o "X"
   if (menuIcon.src.includes('hamburger-icon.png')) {
-    menuIcon.src = '../images/close-icon.png'; // Altera para o ícone de fechar
+    menuIcon.src = '../assets/images/close-icon.png'; // Altera para o ícone de fechar
   } else {
-    menuIcon.src = '../images/hamburger-icon.png'; // Volta para o ícone de hambúrguer
+    menuIcon.src = '../assets/images/hamburger-icon.png'; // Volta para o ícone de hambúrguer
   }
 });
 

@@ -51,6 +51,8 @@ nav {
 }
 
 
+
+
 .logoAgendou {
   width: 250px;
   height: 80px;
@@ -198,7 +200,7 @@ nav {
 
 /* Seção Hero */
 .hero {
-  background: url(../assets/hero.png) no-repeat center center/cover;
+  background: url(/assets/images/hero.png) no-repeat center center/cover;
   color: #fff;
   height: 70vh;
   display: flex;
