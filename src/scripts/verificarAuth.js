@@ -1,4 +1,8 @@
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+// Importar o auth do firebase-config.js
+import { auth } from '../firebase-config.js';
+// Agora você pode usar o auth diretamente
+console.log(auth);
 
 function verificarLogin() {
   // Obtém a instância do Firebase Auth

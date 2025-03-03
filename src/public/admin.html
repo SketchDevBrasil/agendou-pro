@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,12 +15,14 @@
       text-align: center;
       font-family: Arial, sans-serif;
     }
+
     .user-info img {
       width: 150px;
       height: 150px;
       border-radius: 50%;
       margin-bottom: 15px;
     }
+
     #verify-message {
       margin-top: 20px;
       padding: 10px;
@@ -29,10 +32,11 @@
     }
   </style>
 </head>
+
 <body>
   <div class="user-info">
     <h2>Informações do Usuário</h2>
-    <img id="user-image" src="" alt="Imagem do Usuário" style="display:none;">
+    
     <p id="user-name">Nome: </p>
     <p id="user-email">Email: </p>
     <p id="user-uid">UID: </p>
@@ -43,39 +47,22 @@
     </div>
   </div>
 
-  <!-- Importa os módulos do Firebase -->
-  <script type="module">
-    // Importações necessárias do Firebase
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-    import { getAuth, onAuthStateChanged, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
-    // Configuração do Firebase (substitua pelos seus dados, se necessário)
-    const firebaseConfig = {
-      apiKey: "AIzaSyDWb3xpY7Ft7dIkJmQvJTQIK2dIducFHWA",
-      authDomain: "agendou-pro.firebaseapp.com",
-      databaseURL: "https://agendou-pro-default-rtdb.firebaseio.com",
-      projectId: "agendou-pro",
-      storageBucket: "agendou-pro.firebasestorage.app",
-      messagingSenderId: "251289108784",
-      appId: "1:251289108784:web:f89f926e001932cd9c48f5",
-      measurementId: "G-0Z7Z81PLYH"
-    };
-
-    // Inicializa o Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+  <script>
+    // Importar o auth do firebase-config.js
+    import { auth } from '../firebase-config.js';
 
     // Referências aos elementos da página
     const userImage = document.getElementById('user-image');
-    const userName  = document.getElementById('user-name');
+    const userName = document.getElementById('user-name');
     const userEmail = document.getElementById('user-email');
-    const userUid   = document.getElementById('user-uid');
+    const userUid = document.getElementById('user-uid');
     const verifyMessageDiv = document.getElementById('verify-message');
 
     // Função para enviar e-mail de verificação
     window.sendVerificationEmail = () => {
       const user = auth.currentUser;
-      if(user) {
+      if (user) {
         sendEmailVerification(user)
           .then(() => {
             alert("E-mail de verificação enviado. Por favor, verifique sua caixa de entrada.");
@@ -115,4 +102,5 @@
     });
   </script>
 </body>
+
 </html>

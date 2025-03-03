@@ -1,39 +1,8 @@
-// Importações do Firebase
+// Importar o auth do firebase-config.js
+import { auth } from '../firebase-config.js';
 
-import { initializeApp } from 'firebase/app';
-import { 
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-  deleteUser,
-  sendEmailVerification,
-  sendPasswordResetEmail,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-  GoogleAuthProvider,
-  signInWithPopup,
- } from 'firebase/auth';
-
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDWb3xpY7Ft7dIkJmQvJTQIK2dIducFHWA",
-  authDomain: "agendou-pro.firebaseapp.com",
-  databaseURL: "https://agendou-pro-default-rtdb.firebaseio.com",
-  projectId: "agendou-pro",
-  storageBucket: "agendou-pro.firebasestorage.app",
-  messagingSenderId: "251289108784",
-  appId: "1:251289108784:web:f89f926e001932cd9c48f5",
-  measurementId: "G-0Z7Z81PLYH"
-};
-
-
-
-
-// Inicializa Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+// Agora você pode usar o auth diretamente
+console.log(auth);
 
 // Variáveis globais
 let isLoginMode = true;
@@ -210,10 +179,10 @@ window.togglePassword = function () {
   const toggleIcon = document.getElementById("toggle-password");
   if (passwordInput.type === "password") {
     passwordInput.type = "text";
-    toggleIcon.src = "images/eye-open.png";
+    toggleIcon.src = "../assets/images/eye-open.png";
   } else {
     passwordInput.type = "password";
-    toggleIcon.src = "images/eye-closed.png";
+    toggleIcon.src = "../assets/eye-closed.png";
   }
 };
 

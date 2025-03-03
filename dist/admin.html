@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Verificação de Login</title>
+    <style>
+        .user-info {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            max-width: 400px;
+            text-align: center;
+            font-family: Arial, sans-serif
+        }
+
+        .user-info img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px
+        }
+
+        #verify-message {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ff9800;
+            background-color: #fff3e0;
+            border-radius: 5px
+        }
+    </style>
+    <script defer="defer" src="/scripts/admin.bundle.js"></script>
+</head>
+
+<body>
+    <div class="user-info">
+        <h2>Informações do Usuário</h2>
+        <p id="user-name">Nome:</p>
+        <p id="user-email">Email:</p>
+        <p id="user-uid">UID:</p>
+        <div id="verify-message" style="display:none">
+            <p>Seu e-mail não foi verificado.</p><button id="btn-verify" onclick="sendVerificationEmail()">Enviar
+                verificação</button>
+        </div>
+    </div>
+    <script>import { auth } from "../firebase-config.js"; const userImage = document.getElementById("user-image"), userName = document.getElementById("user-name"), userEmail = document.getElementById("user-email"), userUid = document.getElementById("user-uid"), verifyMessageDiv = document.getElementById("verify-message"); window.sendVerificationEmail = () => { const e = auth.currentUser; e && sendEmailVerification(e).then((() => { alert("E-mail de verificação enviado. Por favor, verifique sua caixa de entrada.") })).catch((e => { console.error("Erro ao enviar e-mail de verificação:", e), alert("Não foi possível enviar o e-mail de verificação.") })) }, onAuthStateChanged(auth, (e => { e ? (console.log("Usuário autenticado:", e), userName.textContent = "Nome: " + (e.displayName || "Não informado"), userEmail.textContent = "Email: " + e.email, userUid.textContent = "UID: " + e.uid, e.photoURL ? (userImage.src = e.photoURL, userImage.style.display = "block") : userImage.style.display = "none", e.emailVerified ? verifyMessageDiv.style.display = "none" : verifyMessageDiv.style.display = "block") : (console.log("Nenhum usuário autenticado. Redirecionando para login..."), window.location.href = "/login") }))</script>
+</body>
+
+</html>
