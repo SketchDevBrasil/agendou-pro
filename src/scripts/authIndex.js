@@ -342,3 +342,5 @@ window.closeModal = function () {
   const modal = document.getElementById("auth-modal");
   modal.style.display = "none";
 };
+
+closeModal();

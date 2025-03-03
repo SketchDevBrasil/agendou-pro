@@ -1,7 +1,7 @@
 {
   "hosting": {
     "site": "agendou",
-    "public": "public",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -9,46 +9,54 @@
     ],
     "rewrites": [
       {
-        "source": "/admin",
-        "function": "LoginAdmin"
+        "source": "/agendar",
+        "function": "agendamento"
+      },
+      {
+        "source": "/",
+        "destination": "/index.html" // Rota raiz serve index.html
+      },
+      {
+        "source": "/index",
+        "destination": "/index.html" // Redireciona /index para index.html
       },
       {
         "source": "/admin",
-        "destination": "/admin/index.html"
+        "destination": "/admin.html" // Redireciona /admin para admin.html
       },
       {
         "source": "/login",
-        "destination": "/login.html"
+        "destination": "/login.html" // Redireciona /login para login.html
       },
       {
         "source": "/politicas",
-        "destination": "/politicas.html"
+        "destination": "/politicas.html" // Redireciona /politicas para politicas.html
       },
       {
         "source": "/sitemap",
-        "destination": "/sitemap.xml"
+        "destination": "/sitemap.xml" // Redireciona /sitemap para sitemap.xml
       },
       {
         "source": "/(css|js|json|images|img)/(.*)",
-        "destination": "/$1/$2"
+        "destination": "/$1/$2" // Serve arquivos estáticos (CSS, JS, imagens, etc.)
       },
       {
         "source": "/**",
-        "destination": "/public/index.html"
+        "destination": "/index.html" // Todas as outras rotas vão para index.html (SPA)
       }
-    ]
+    ],
+    "cleanUrls": true, // Remove a extensão .html das URLs
+    "trailingSlash": false // Remove a barra final das URLs
   },
-  "functions": [
-    {
-      "source": "functions",
-      "codebase": "default",
-      "ignore": [
-        "node_modules",
-        ".git",
-        "firebase-debug.log",
-        "firebase-debug.*.log",
-        "*.local"
-      ]
-    }
-  ]
+  "functions": {
+    "source": "functions",
+    "codebase": "default",
+    "ignore": [
+      "node_modules",
+      ".git",
+      "firebase-debug.log",
+      "firebase-debug.*.log",
+      "*.local"
+    ]
+  }
 }

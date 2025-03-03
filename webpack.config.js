@@ -13,7 +13,7 @@ export default {
   entry: {
     index: './src/index.js', // Ponto de entrada para index.html
     authIndex: './src/scripts/authIndex.js', // Ponto de entrada para index.html (autenticação)
-    admin: './src/scripts/verificarAuth.js', // Ponto de entrada para admin.html
+    admin: './src/scripts/authAdmin.js', // Ponto de entrada para admin.html
     login: './src/scripts/authLogin.js', // Ponto de entrada para login.html
   },
   output: {
@@ -26,7 +26,9 @@ export default {
   devServer: {
     static: path.resolve(__dirname, 'dist'), // Diretório de arquivos estáticos
     hot: true, // Habilita Hot Module Replacement (HMR)
-    historyApiFallback: true, // Habilita fallback para SPA (Single Page Application)
+    port: 8080, // Define a porta (opcional, já que 8080 é o padrão)
+    open: true, // Abre o navegador automaticamente
+    watchFiles: ['src/**/*.html'], // Observa mudanças nos arquivos HTML
   },
   module: {
     rules: [
@@ -60,43 +62,43 @@ export default {
   plugins: [
     // Página inicial (index.html)
     new HtmlWebpackPlugin({
-      template: './src/index.html', // Template HTML
-      filename: 'index.html', // Nome do arquivo de saída
+      template: './src/public/index.html',
+      filename: 'index.html',
       chunks: ['index', 'authIndex'], // Inclui os chunks "index" e "authIndex"
     }),
     // Página de Admin (admin.html)
     new HtmlWebpackPlugin({
-      template: './src/public/admin.html', // Template HTML
-      filename: 'admin.html', // Nome do arquivo de saída
-      chunks: ['admin'], // Inclui o chunk "admin"
+      template: './src/public/admin.html',
+      filename: 'admin.html',
+      chunks: ['admin'], // Inclui apenas o chunk "admin"
     }),
     // Página de Login (login.html)
     new HtmlWebpackPlugin({
-      template: './src/public/login.html', // Template HTML
-      filename: 'login.html', // Nome do arquivo de saída
-      chunks: ['login'], // Inclui o chunk "login"
+      template: './src/public/login.html',
+      filename: 'login.html',
+      chunks: ['login'], // Inclui apenas o chunk "login"
     }),
     // Página 404 (404.html)
     new HtmlWebpackPlugin({
-      template: './src/public/404.html', // Template HTML
-      filename: '404.html', // Nome do arquivo de saída
+      template: './src/public/404.html',
+      filename: '404.html',
       chunks: [], // Não inclui nenhum chunk (página estática)
     }),
     // Página de Estabelecimento (estabelecimento.html)
     new HtmlWebpackPlugin({
-      template: './src/public/estabelecimento.html', // Template HTML
-      filename: 'estabelecimento.html', // Nome do arquivo de saída
+      template: './src/public/estabelecimento.html',
+      filename: 'estabelecimento.html',
       chunks: [], // Não inclui nenhum chunk (página estática)
     }),
     // Página de Políticas (politicas.html)
     new HtmlWebpackPlugin({
-      template: './src/public/politicas.html', // Template HTML
-      filename: 'politicas.html', // Nome do arquivo de saída
+      template: './src/public/politicas.html',
+      filename: 'politicas.html',
       chunks: [], // Não inclui nenhum chunk (página estática)
     }),
     // Extrai CSS em arquivos separados
     new MiniCssExtractPlugin({
-      filename: 'styles/[name].css', // Caminho de saída para CSS
+      filename: 'styles/[name].css', // Gera arquivos como index.css, admin.css, etc.
     }),
     // Carrega variáveis de ambiente do arquivo .env
     new Dotenv(),

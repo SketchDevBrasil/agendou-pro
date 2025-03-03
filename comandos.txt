@@ -13,8 +13,9 @@ npm install --save-dev webpack webpack-cli webpack-dev-server babel-loader @babe
 para testar localmente
 
 com webpack rm -rf dist .webpack-cache
-npm start
+
 npm run build
+npm start
 
 # Limpar a pasta node_modules
 Remove-Item -Recurse -Force node_modules
