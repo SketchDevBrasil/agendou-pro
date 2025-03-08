@@ -20,11 +20,24 @@
       <img id="user-image" src="../assets/images/user.png" alt="Imagem de Perfil">
       <!-- Adicione o campo @ no perfil -->
       <div class="profile-info">
-        <h2>
+
+        <!-- Botão para abrir o modal de upload -->
+
+        <p id="update-profile-button">
+          <span>Editar imagem</span>
+          <i class="fas fa-pencil-alt edit-icon"></i>
+        </p>
+
+        <p onclick="openEditNameModal()">
           <span id="user-name">Nome do Usuário</span>
-          <i class="fas fa-pencil-alt edit-icon" onclick="openEditNameModal()"></i>
-        </h2>
-        <p id="user-arroba">@usuario123</p> <!-- Novo campo @ com o símbolo @ -->
+          <i class="fas fa-pencil-alt edit-icon"></i>
+        </p>
+
+        <p onclick="openEditArrobaModal()">
+          <span id="user-arroba">@ do Usuário</span>
+          <i class="fas fa-pencil-alt edit-icon"></i>
+        </p>
+
         <p id="user-email">Email: usuario@example.com</p>
         <p id="user-uid">UID: 123456</p>
       </div>
@@ -37,8 +50,7 @@
       <button id="btn-verify" onclick="sendVerificationEmail()">Enviar verificação</button>
     </div>
 
-    <!-- Botão para abrir o modal de upload -->
-    <button id="update-profile-button">Atualizar Foto de Perfil</button>
+
   </div>
 
   <!-- Modal de Upload -->

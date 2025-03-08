@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Função para abrir o modal de edição de @
   window.openEditArrobaModal = () => {
+    document.getElementById('arroba-error').style.display = 'none'; // Oculta a mensagem de erro
     editArrobaModal.style.display = 'flex';
   };
 
@@ -113,10 +114,23 @@ document.addEventListener('DOMContentLoaded', () => {
   window.saveArroba = async () => {
     const newArroba = editArrobaInput.value.trim();
     if (newArroba) {
+      // Valida o comprimento do @
+      if (newArroba.length > 23) {
+        alert("O @ deve ter no máximo 23 caracteres.");
+        return;
+      }
+
       // Valida o formato do @ (apenas letras minúsculas, números e _)
       const regex = /^[a-z0-9_]+$/;
       if (!regex.test(newArroba)) {
         alert("O @ deve conter apenas letras minúsculas, números e underscores (_).");
+        return;
+      }
+
+      // Verifica se o @ já existe
+      const isUnique = await isArrobaUnique(newArroba);
+      if (!isUnique) {
+        document.getElementById('arroba-error').style.display = 'block';
         return;
       }
 
@@ -130,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
           });
 
           // Atualiza o @ na página
-          userArroba.textContent = "@: " + newArroba;
+          userArroba.textContent = "@" + newArroba;
           closeEditArrobaModal();
           alert("@ atualizado com sucesso!");
         } catch (error) {
@@ -393,9 +407,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-
-
-
   // Função para verificar se o @ já existe na coleção users
   const isArrobaUnique = async (arroba) => {
     const usersRef = collection(db, 'users');
@@ -403,66 +414,4 @@ document.addEventListener('DOMContentLoaded', () => {
     const querySnapshot = await getDocs(q);
     return querySnapshot.empty; // Retorna true se o @ for único
   };
-
-
-
-  // Função para salvar o @ no Firestore
-  window.saveArroba = async () => {
-    const newArroba = editArrobaInput.value.trim();
-    if (newArroba) {
-      // Valida o comprimento do @
-      if (newArroba.length > 23) {
-        alert("O @ deve ter no máximo 23 caracteres.");
-        return;
-      }
-
-      // Valida o formato do @ (apenas letras minúsculas, números e _)
-      const regex = /^[a-z0-9_]+$/;
-      if (!regex.test(newArroba)) {
-        alert("O @ deve conter apenas letras minúsculas, números e underscores (_).");
-        return;
-      }
-
-      // Verifica se o @ já existe
-      const isUnique = await isArrobaUnique(newArroba);
-      if (!isUnique) {
-        document.getElementById('arroba-error').style.display = 'block';
-        return;
-      }
-
-      const user = auth.currentUser;
-      if (user) {
-        const userDocRef = doc(db, 'users', user.uid);
-        try {
-          // Atualiza o @ no Firestore
-          await updateDoc(userDocRef, {
-            arroba: newArroba,
-          });
-
-          // Atualiza o @ na página
-          userArroba.textContent = "@" + newArroba;
-          closeEditArrobaModal();
-          alert("@ atualizado com sucesso!");
-        } catch (error) {
-          console.error("Erro ao atualizar o @:", error);
-          alert("Não foi possível atualizar o @.");
-        }
-      }
-    } else {
-      alert("Por favor, insira um @ válido.");
-    }
-  };
-
-  // Função para abrir o modal de edição de @
-  window.openEditArrobaModal = () => {
-    document.getElementById('arroba-error').style.display = 'none'; // Oculta a mensagem de erro
-    editArrobaModal.style.display = 'flex';
-  };
-
-  // Função para fechar o modal de edição de @
-  window.closeEditArrobaModal = () => {
-    editArrobaModal.style.display = 'none';
-  };
-
-
 });
