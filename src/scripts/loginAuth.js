@@ -1,9 +1,13 @@
-
-// Importar o auth do firebase-config.js
 import { auth } from '../firebase-config.js';
-
-// Agora você pode usar o auth diretamente
-console.log(auth);
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signInWithPhoneNumber,
+  RecaptchaVerifier,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from 'firebase/auth';
 
 // Variáveis globais
 let isLoginMode = true;
@@ -287,7 +291,7 @@ window.resendVerificationCode = function () {
 function updateUI(user) {
   if (user) {
     console.log("Usuário logado:", user);
-    window.location.href = "/admin";
+    window.location.href = "/admin.html";
   } else {
     console.log("Nenhum usuário logado.");
   }
@@ -321,4 +325,6 @@ window.closeGenericModal = function () {
   modal.style.display = "none";
 };
 
-
+window.backPag = function () {
+  window.history.back();
+};

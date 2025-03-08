@@ -9,98 +9,95 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
-  mode: 'development', // Modo de desenvolvimento
+  mode: 'development',
   entry: {
-    index: './src/index.js', // Ponto de entrada para index.html
-    authIndex: './src/scripts/authIndex.js', // Ponto de entrada para index.html (autenticação)
-    admin: './src/scripts/authAdmin.js', // Ponto de entrada para admin.html
-    login: './src/scripts/authLogin.js', // Ponto de entrada para login.html
+    index: './src/scriptsImport/index.js',
+    login: './src/scriptsImport/login.js',
+    admin: './src/scriptsImport/admin.js',
   },
   output: {
-    filename: 'scripts/[name].bundle.js', // Gera arquivos como index.bundle.js, admin.bundle.js, etc.
-    path: path.resolve(__dirname, 'dist'), // Diretório de saída
-    clean: true, // Limpa o diretório de saída antes de cada build
-    publicPath: '/', // Caminho base para os assets
-    assetModuleFilename: 'assets/images/[name][ext]', // Caminho para imagens
+    filename: 'scripts/[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+    publicPath: '/',
+    assetModuleFilename: 'assets/images/[name][ext]',
   },
   devServer: {
-    static: path.resolve(__dirname, 'dist'), // Diretório de arquivos estáticos
-    hot: true, // Habilita Hot Module Replacement (HMR)
-    port: 8080, // Define a porta (opcional, já que 8080 é o padrão)
-    open: true, // Abre o navegador automaticamente
-    watchFiles: ['src/**/*.html'], // Observa mudanças nos arquivos HTML
+    static: path.resolve(__dirname, 'dist'),
+    hot: true,
+    port: 8080,
+    open: true,
+    watchFiles: ['src/**/*.html'],
   },
   module: {
     rules: [
       {
-        test: /\.js$/, // Arquivos JavaScript
-        exclude: /node_modules/, // Ignora a pasta node_modules
+        test: /\.js$/,
+        exclude: /node_modules/,
         use: {
-          loader: 'babel-loader', // Usa o Babel para transpilar
+          loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'], // Preset do Babel para compatibilidade
+            presets: ['@babel/preset-env'],
           },
         },
       },
       {
-        test: /\.css$/, // Arquivos CSS
-        use: [MiniCssExtractPlugin.loader, 'css-loader'], // Extrai CSS em arquivos separados
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i, // Arquivos de imagem
-        type: 'asset/resource', // Trata como recurso estático
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+        include: path.resolve(__dirname, 'src/assets/images'),
         generator: {
-          filename: 'assets/images/[name][ext]', // Caminho de saída para imagens
+          filename: 'assets/images/[name][ext]',
         },
       },
       {
-        test: /\.html$/i, // Arquivos HTML
-        use: ['html-loader'], // Usa o html-loader para processar HTML
+        test: /\.html$/i,
+        use: ['html-loader'],
       },
     ],
   },
   plugins: [
-    // Página inicial (index.html)
     new HtmlWebpackPlugin({
       template: './src/public/index.html',
       filename: 'index.html',
-      chunks: ['index', 'authIndex'], // Inclui os chunks "index" e "authIndex"
+      chunks: ['index'],
     }),
-    // Página de Admin (admin.html)
     new HtmlWebpackPlugin({
       template: './src/public/admin.html',
       filename: 'admin.html',
-      chunks: ['admin'], // Inclui apenas o chunk "admin"
+      chunks: ['admin'],
     }),
-    // Página de Login (login.html)
     new HtmlWebpackPlugin({
       template: './src/public/login.html',
       filename: 'login.html',
-      chunks: ['login'], // Inclui apenas o chunk "login"
+      chunks: ['login'],
     }),
-    // Página 404 (404.html)
     new HtmlWebpackPlugin({
       template: './src/public/404.html',
       filename: '404.html',
-      chunks: [], // Não inclui nenhum chunk (página estática)
+      chunks: [],
     }),
-    // Página de Estabelecimento (estabelecimento.html)
     new HtmlWebpackPlugin({
       template: './src/public/estabelecimento.html',
       filename: 'estabelecimento.html',
-      chunks: [], // Não inclui nenhum chunk (página estática)
+      chunks: [],
     }),
-    // Página de Políticas (politicas.html)
     new HtmlWebpackPlugin({
       template: './src/public/politicas.html',
       filename: 'politicas.html',
-      chunks: [], // Não inclui nenhum chunk (página estática)
+      chunks: [],
     }),
-    // Extrai CSS em arquivos separados
     new MiniCssExtractPlugin({
-      filename: 'styles/[name].css', // Gera arquivos como index.css, admin.css, etc.
+      filename: 'styles/[name].css',
     }),
-    // Carrega variáveis de ambiente do arquivo .env
     new Dotenv(),
   ],
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
 };

@@ -1,0 +1,28 @@
+/*!************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/admin.css ***!
+  \************************************************************************/
+
+.user-info {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  max-width: 400px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.user-info img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+#verify-message {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ff9800;
+  background-color: #fff3e0;
+  border-radius: 5px;
+}

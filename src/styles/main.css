@@ -200,7 +200,7 @@ nav {
 
 /* Seção Hero */
 .hero {
-  background: url('../assets/images/hero.png') no-repeat center center/cover;
+  background: url('../assets/images/heroEmpresas.png') no-repeat center center/cover;
   color: #fff;
   height: 70vh;
   display: flex;
@@ -229,11 +229,33 @@ nav {
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
+  word-wrap: break-word; /* Compatibilidade com navegadores mais antigos */
+  overflow-wrap: break-word; /* Padrão moderno para quebra de palavras */
+  /* Preserva espaços em branco e quebras de linha */
+  white-space: normal; /* Permite que o texto quebre naturalmente */
+  /* Define o tamanho máximo do contêiner */
+  max-width: 100%; /* Garante que o texto não ultrapasse a largura da tela */
+  /* Adiciona um espaçamento interno (opcional) */
+  padding: 10px;
 }
 
 .hero-content p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
+  /* Quebra de palavras longas */
+  word-wrap: break-word; /* Compatibilidade com navegadores mais antigos */
+  overflow-wrap: break-word; /* Padrão moderno para quebra de palavras */
+
+  /* Preserva espaços em branco e quebras de linha */
+  white-space: normal; /* Permite que o texto quebre naturalmente */
+
+  /* Define o tamanho máximo do contêiner */
+  max-width: 100%; /* Garante que o texto não ultrapasse a largura da tela */
+
+  /* Adiciona um espaçamento interno (opcional) */
+  padding: 10px;
+
+  /* Centraliza o texto (opcional) */
+  text-align: center;
+
 }
 
 .hero-content .btn-cta {

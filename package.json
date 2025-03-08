@@ -9,9 +9,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --open",
-    "build": "webpack --mode production",
-    "serve": "node server.js"
+    "serve": "node server.js",
+    "clean": "rimraf dist .webpack-cache",
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack serve --open"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
@@ -28,6 +29,7 @@
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.3",
     "mini-css-extract-plugin": "^2.9.2",
+    "rimraf": "^6.0.1",
     "style-loader": "^4.0.0",
     "url-loader": "^4.1.1",
     "webpack": "^5.98.0",

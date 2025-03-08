@@ -1,1 +1,29 @@
-<!doctype html><html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verificação de Login</title><script defer="defer" src="/scripts/admin.bundle.js"></script></head><body><div class="user-info"><h2>Informações do Usuário</h2><p id="user-name">Nome:</p><p id="user-email">Email:</p><p id="user-uid">UID:</p><div id="verify-message" style="display:none"><p>Seu e-mail não foi verificado.</p><button id="btn-verify" onclick="sendVerificationEmail()">Enviar verificação</button></div></div></body></html>
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verificação de Login</title>
+
+<script defer src="/scripts/admin.bundle.js"></script><link href="/styles/admin.css" rel="stylesheet"></head>
+
+<body>
+  <div class="user-info">
+    <!-- Imagem do perfil -->
+    <img id="profile-image" src="/assets/images/user.png" alt="Imagem de Perfil">
+
+    <p id="user-name">Nome: </p>
+    <p id="user-email">Email: </p>
+    <p id="user-uid">UID: </p>
+    <!-- Área de verificação de e-mail -->
+    <div id="verify-message" style="display: none;">
+      <p>Seu e-mail não foi verificado.</p>
+      <button id="btn-verify" onclick="sendVerificationEmail()">Enviar verificação</button>
+    </div>
+</div>
+
+ 
+</body>
+
+</html>

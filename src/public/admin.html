@@ -4,26 +4,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Verificação de Login</title>
+  <title>Perfil do Usuário</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+  <!-- CSS do Cropper.js -->
 
 </head>
 
 <body>
-  <div class="user-info">
-    <h2>Informações do Usuário</h2>
-    
-    <p id="user-name">Nome: </p>
-    <p id="user-email">Email: </p>
-    <p id="user-uid">UID: </p>
-    <!-- Área de verificação de e-mail -->
+
+
+  <div class="container">
+    <!-- Cabeçalho do perfil -->
+    <div class="profile-header">
+      <img id="user-image" src="../assets/images/user.png" alt="Imagem de Perfil">
+      <!-- Adicione o campo @ no perfil -->
+      <div class="profile-info">
+        <h2>
+          <span id="user-name">Nome do Usuário</span>
+          <i class="fas fa-pencil-alt edit-icon" onclick="openEditNameModal()"></i>
+        </h2>
+        <p id="user-arroba">@usuario123</p> <!-- Novo campo @ com o símbolo @ -->
+        <p id="user-email">Email: usuario@example.com</p>
+        <p id="user-uid">UID: 123456</p>
+      </div>
+    </div>
+
+
+    <!-- Mensagem de verificação de e-mail -->
     <div id="verify-message" style="display: none;">
       <p>Seu e-mail não foi verificado.</p>
       <button id="btn-verify" onclick="sendVerificationEmail()">Enviar verificação</button>
     </div>
+
+    <!-- Botão para abrir o modal de upload -->
+    <button id="update-profile-button">Atualizar Foto de Perfil</button>
+  </div>
+
+  <!-- Modal de Upload -->
+  <div id="upload-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-upload-modal" class="close-modal">&times;</span>
+      <h2>Atualizar Foto de Perfil</h2>
+      <div id="image-cropper-container">
+        <img id="image-to-crop" src="#" alt="Imagem para recortar" style="display: none;">
+      </div>
+      <form id="upload-form">
+        <input type="file" id="file-input" accept="image/*" required>
+        <div id="progress-bar-container" style="display: none;">
+          <div id="progress-bar"></div>
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de Edição de Nome -->
+  <div id="edit-name-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-edit-modal" class="close-modal">&times;</span>
+      <h2>Editar Nome</h2>
+      <input type="text" id="edit-name-input" placeholder="Digite o novo nome">
+      <button onclick="saveName()">Salvar</button>
+    </div>
   </div>
 
 
- 
+  <!-- Modal de Edição de @ -->
+  <div id="edit-arroba-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-arroba-modal" class="close-modal">&times;</span>
+      <h2>Editar @</h2>
+      <input type="text" id="edit-arroba-input" placeholder="Digite o novo @ (máximo 23 caracteres)">
+      <button onclick="saveArroba()">Salvar</button>
+      <p id="arroba-error" style="color: red; display: none;">Este @ já está em uso.</p>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+  <!-- JavaScript do Cropper.js -->
+
 </body>
 
 </html>

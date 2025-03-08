@@ -1,1 +1,107 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agendou Pro Login</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"><script defer="defer" src="/scripts/login.bundle.js"></script></head><body><header><div class="HeaderLogin"><img class="logoAgendou" src="/assets/images/logo.png" alt="logoAgendou"></div></header><div id="auth-modal" class="modal"><div class="modal-content"><div class="HeaderLogin"><h1 id="modal-title">Login</h1><img src="/assets/images/close-icon.png" alt="Ícone de Email" class="close" onclick="closeModal()"></div><div id="error-message" class="error"></div><div class="input-container"><input id="email" type="email" class="input-field" placeholder="Email" required aria-label="Email"> <img src="/assets/images/email-icon.png" alt="Ícone de Email" class="icon"></div><div class="input-container"><input id="password" type="password" class="input-field" placeholder="Senha" required aria-label="Senha" maxlength="8"> <img id="toggle-password" src="/assets/images/eye-closed.png" alt="Mostrar/Ocultar Senha" class="icon" onclick="togglePassword()"></div><button id="auth-button" class="btn" onclick="handleAuth()">Entrar</button><p id="toggle-text" onclick="toggleMode()">Não tem uma conta? <span>Clique aqui para Criar.</span></p><p id="forgot-password-text" onclick="openForgotPasswordModal()">Esqueci minha senha</p><p id="text">Ou entre com:</p><button id="google-login-button" class="btnGoogle" onclick="loginWithGoogle()"><img src="/assets/images/google.png" alt="Google" style="width:20px;vertical-align:middle;margin-right:8px"> Login com Google</button><p id="text">Ou:</p><div class="phone-container"><input id="phone" type="tel" class="input-field" placeholder="+55 DDD + Número" required aria-label="Número de Celular"></div><div id="recaptcha-container"></div><button class="btn" onclick="loginWithPhone()">Login com Celular</button><div id="otp-section" style="display:none"><input id="otp" class="input-field" placeholder="Código de Verificação" required aria-label="Código"> <button class="btn" onclick="verifyOTP()">Verificar Código</button><div id="countdown"></div><div id="resend-verification" onclick="resendVerificationCode()">Reenviar Código de Verificação</div></div></div></div><div id="generic-modal" class="modal"><div class="modal-content"><span class="close" onclick="closeGenericModal()">&times;</span><h3 id="modal-title">Título</h3><p id="modal-message">Mensagem</p><button class="btn" onclick="closeGenericModal()">OK</button></div></div><footer><p>&copy; 2025 Agendou. Todos os direitos reservados.</p><a href="politicas" class="politicas-link">Politicas de uso</a></footer></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendou Pro Login</title>
+ 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<script defer src="/scripts/login.bundle.js"></script><link href="/styles/login.css" rel="stylesheet"></head>
+
+
+<body>
+  <!-- Menu Bar -->
+  <header>
+    <div class="HeaderLogin">
+      <img class="logoAgendou" src="/assets/images/logo.png" alt="logoAgendou">
+      </div>
+  </header>
+ 
+ 
+    <!-- Modal de Login -->
+    <div id="auth-modal" class="modal">
+      <div class="modal-content">
+  
+  
+  
+        <!-- Cabeçalho do modal -->
+        <div class="HeaderLogin">
+          <h1 id="modal-title">Login</h1><img src="/assets/images/close-icon.png" alt="Ícone de Email" class="close"
+            onclick="backPag()">
+        </div>
+        <div id="error-message" class="error"></div>
+  
+        <!-- Formulário de Login/Registro -->
+        <div class="input-container">
+          <input id="email" type="email" class="input-field" placeholder="Email" required aria-label="Email">
+          <img src="/assets/images/email-icon.png" alt="Ícone de Email" class="icon">
+        </div>
+        <div class="input-container">
+          <input id="password" type="password" class="input-field" placeholder="Senha" required aria-label="Senha"
+            maxlength="8">
+          <img id="toggle-password" src="/assets/images/eye-closed.png" alt="Mostrar/Ocultar Senha" class="icon"
+            onclick="togglePassword()">
+        </div>
+  
+        <!-- Botão de ação (Entrar ou Criar Conta) -->
+        <button id="auth-button" class="btn" onclick="handleAuth()">Entrar</button>
+  
+        <!-- Link para alternar entre Login e Registro -->
+        <p id="toggle-text" onclick="toggleMode()">Não tem uma conta? <span>Clique aqui para Criar.</span></p>
+  
+        <!-- Esqueci minha senha -->
+        <p id="forgot-password-text" onclick="openForgotPasswordModal()">Esqueci minha senha</p>
+  
+        <!-- Login com Google -->
+        <p id="text">Ou entre com:</p>
+        <button id="google-login-button" class="btnGoogle" onclick="loginWithGoogle()">
+          <img src="/assets/images/google.png" alt="Google"
+            style="width:20px; vertical-align: middle; margin-right:8px;">
+          Login com Google
+        </button>
+        <p id="text">Ou:</p>
+        <!-- Login com Celular -->
+  
+        <div class="phone-container">
+          <input id="phone" type="tel" class="input-field" placeholder="+55 DDD + Número" required
+            aria-label="Número de Celular">
+        </div>
+  
+        <div id="recaptcha-container"></div>
+  
+        <button class="btn" onclick="loginWithPhone()">Login com Celular</button>
+  
+        <!-- Seção de OTP (Código de Verificação) -->
+        <div id="otp-section" style="display: none;">
+          <input id="otp" type="text" class="input-field" placeholder="Código de Verificação" required
+            aria-label="Código">
+          <button class="btn" onclick="verifyOTP()">Verificar Código</button>
+          <div id="countdown"></div>
+          <div id="resend-verification" onclick="resendVerificationCode()">Reenviar Código de Verificação</div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Modal Genérico -->
+  <div id="generic-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeGenericModal()">&times;</span>
+      <h3 id="modal-title">Título</h3>
+      <p id="modal-message">Mensagem</p>
+      <button class="btn" onclick="closeGenericModal()">OK</button>
+    </div>
+  </div>
+ 
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2025 Agendou. Todos os direitos reservados.</p>
+        <a href="politicas" class="politicas-link">Politicas de uso</a>
+    </footer>
+  
+ 
+</body>
+
+</html>

@@ -24,7 +24,7 @@
         <li><a href="#pricing">Planos</a></li>
         <li><a href="#contact">Contato</a></li>
       </ul>
-      <a href="#" class="btn-login" onclick="openModal()"> Login </a>
+      <a href="/login.html" class="btn-login">Login</a>
       <div class="menu-toggle" id="mobile-menu">
         <img id="menu-icon" src="../assets/images/hamburger-icon.png" alt="Menu">
       </div>
@@ -34,12 +34,12 @@
   <!-- Seção Hero -->
   <section id="home" class="hero">
     <div class="hero-content">
-      <h1 id="hero-title">Agendamento Online Simples e Eficiente</h1>
+      <h1 id="hero-title">Agendamento Online Simples e Eficiente Para Empresas</h1>
       <p id="hero-subtitle">Gerencie seus agendamentos, otimize seu tempo e aumente sua produtividade.</p>
       <!-- Botões de Alternância -->
       <div class="toggle-buttons">
-        <button id="btn-empresas" class="active" onclick="showEmpresas()">Para Empresas</button>
-        <button id="btn-usuarios" onclick="showUsuarios()">Para Clientes</button>
+        <button id="btn-empresas" class="active" >Para Empresas</button>
+        <button id="btn-usuarios" >Para Clientes</button>
       </div>
     </div>
   </section>
@@ -300,71 +300,6 @@
       <button type="submit">Enviar Mensagem</button>
     </form>
   </section>
-
-
-  <!-- Modal de Login -->
-  <div id="auth-modal" class="modal">
-    <div class="modal-content">
-
-
-
-      <!-- Cabeçalho do modal -->
-      <div class="HeaderLogin">
-        <h1 id="modal-title">Login</h1><img src="../assets/images/close-icon.png" alt="Ícone de Email" class="close"
-          onclick="closeModal()">
-      </div>
-      <div id="error-message" class="error"></div>
-
-      <!-- Formulário de Login/Registro -->
-      <div class="input-container">
-        <input id="email" type="email" class="input-field" placeholder="Email" required aria-label="Email">
-        <img src="../assets/images/email-icon.png" alt="Ícone de Email" class="icon">
-      </div>
-      <div class="input-container">
-        <input id="password" type="password" class="input-field" placeholder="Senha" required aria-label="Senha"
-          maxlength="8">
-        <img id="toggle-password" src="../assets/images/eye-closed.png" alt="Mostrar/Ocultar Senha" class="icon"
-          onclick="togglePassword()">
-      </div>
-
-      <!-- Botão de ação (Entrar ou Criar Conta) -->
-      <button id="auth-button" class="btn" onclick="handleAuth()">Entrar</button>
-
-      <!-- Link para alternar entre Login e Registro -->
-      <p id="toggle-text" onclick="toggleMode()">Não tem uma conta? <span>Clique aqui para Criar.</span></p>
-
-      <!-- Esqueci minha senha -->
-      <p id="forgot-password-text" onclick="openForgotPasswordModal()">Esqueci minha senha</p>
-
-      <!-- Login com Google -->
-      <p id="text">Ou entre com:</p>
-      <button id="google-login-button" class="btnGoogle" onclick="loginWithGoogle()">
-        <img src="../assets/images/google.png" alt="Google"
-          style="width:20px; vertical-align: middle; margin-right:8px;">
-        Login com Google
-      </button>
-      <p id="text">Ou:</p>
-      <!-- Login com Celular -->
-
-      <div class="phone-container">
-        <input id="phone" type="tel" class="input-field" placeholder="+55 DDD + Número" required
-          aria-label="Número de Celular">
-      </div>
-
-      <div id="recaptcha-container"></div>
-
-      <button class="btn" onclick="loginWithPhone()">Login com Celular</button>
-
-      <!-- Seção de OTP (Código de Verificação) -->
-      <div id="otp-section" style="display: none;">
-        <input id="otp" type="text" class="input-field" placeholder="Código de Verificação" required
-          aria-label="Código">
-        <button class="btn" onclick="verifyOTP()">Verificar Código</button>
-        <div id="countdown"></div>
-        <div id="resend-verification" onclick="resendVerificationCode()">Reenviar Código de Verificação</div>
-      </div>
-    </div>
-  </div>
 
   <!-- Modal Genérico -->
   <div id="generic-modal" class="modal">
