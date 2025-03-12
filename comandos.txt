@@ -24,7 +24,7 @@ Remove-Item package-lock.json
 
 # Reinstalar dependências
 npm install
-
+f
 # Executar o build
 npm run build
 
@@ -117,6 +117,10 @@ git commit -m "nova atualizacão functions..."
 git push --force origin main
 
 firebase deploy --only functions:queryProjectsFuntion
+
+
+
+
 
 
 

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Criar Página de Atendimento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+
+<script defer src="/scripts/createpageImport.bundle.js"></script><link href="/styles/createpageImport.css" rel="stylesheet"></head>
+
+<body>
+    <div class="container">
+        <h1>Criar Página de Atendimento</h1>
+        <form id="create-page-form">
+            <!-- Nome da Página -->
+            <label for="page-name">Nome da Página:</label>
+            <input type="text" id="page-name" placeholder="Ex: Meu Salão" maxlength="30" required>
+            <p id="page-url-preview">Link da página: <span id="page-url">https://agendou.web.app/</span></p>
+
+            <!-- Modalidade do Negócio -->
+            <label for="modalidade">Modalidade do Negócio:</label>
+            <select id="modalidade" required>
+                <option value="">Selecione uma opção</option>
+                <option value="salão-de-beleza">Salão de Beleza</option>
+                <option value="barbearia">Barbearia</option>
+                <option value="clinica-estetica">Clínica Estética</option>
+                <option value="spa">SPA</option>
+                <option value="esteticista">Esteticista</option>
+                <option value="tatuador">Tatuador</option>
+                <option value="outro">Outro</option>
+            </select>
+            <input type="text" id="outra-modalidade" placeholder="Digite a modalidade" style="display: none;">
+
+            <!-- Tipo de Página (Free ou Pro) -->
+            <label for="tipo-pagina">Tipo de Página:</label>
+            <select id="tipo-pagina" required>
+                <option value="free">Free (com anúncios, não personalizável)</option>
+                <option value="pro">Pro (sem anúncios, personalizável)</option>
+            </select>
+
+
+            <!-- Endereço -->
+            <label>Endereço:</label>
+            <div id="endereco">
+                <input type="text" id="pais" placeholder="País" required>
+                <input type="text" id="estado" placeholder="Estado" required>
+                <input type="text" id="cidade" placeholder="Cidade" required>
+                <input type="text" id="rua" placeholder="Rua" required>
+                <input type="text" id="cep" placeholder="CEP" required>
+            </div>
+
+            <!-- Logo -->
+            <label for="logo">Logo:</label>
+            <input type="file" id="logo" accept="image/*" required>
+            <div id="logo-preview" style="display: none;">
+                <img id="logo-image" src="#" alt="Pré-visualização da Logo" style="max-width: 100px;">
+            </div>
+            <div id="progress-bar-container" style="display: none;">
+                <div id="progress-bar"></div>
+            </div>
+
+            <!-- Horários de Atendimento -->
+            <label>Horários de Atendimento:</label>
+
+            <div id="horarios-container">
+                <!-- Segunda-feira -->
+                <div class="dia">
+                    <label><input type="checkbox" class="dia-checkbox" value="segunda"> Segunda-feira</label>
+                    <div class="horarios-expandidos" style="display: none;">
+                        <div class="horario">
+                            <label>Manhã:</label>
+                            <input type="time" class="horario-manha-inicio" disabled> às
+                            <input type="time" class="horario-manha-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Almoço:</label>
+                            <input type="time" class="horario-almoco-inicio" disabled> às
+                            <input type="time" class="horario-almoco-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Tarde:</label>
+                            <input type="time" class="horario-tarde-inicio" disabled> às
+                            <input type="time" class="horario-tarde-fim" disabled>
+                        </div>
+                    </div>
+                </div>
+                <!-- Terça-feira -->
+                <div class="dia">
+                    <label><input type="checkbox" class="dia-checkbox" value="terca"> Terça-feira</label>
+                    <div class="horarios-expandidos" style="display: none;">
+                        <div class="horario">
+                            <label>Manhã:</label>
+                            <input type="time" class="horario-manha-inicio" disabled> às
+                            <input type="time" class="horario-manha-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Almoço:</label>
+                            <input type="time" class="horario-almoco-inicio" disabled> às
+                            <input type="time" class="horario-almoco-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Tarde:</label>
+                            <input type="time" class="horario-tarde-inicio" disabled> às
+                            <input type="time" class="horario-tarde-fim" disabled>
+                        </div>
+                    </div>
+                </div>
+                <!-- Quarta-feira -->
+                <div class="dia">
+                    <label><input type="checkbox" class="dia-checkbox" value="quarta"> Quarta-feira</label>
+                    <div class="horarios-expandidos" style="display: none;">
+                        <div class="horario">
+                            <label>Manhã:</label>
+                            <input type="time" class="horario-manha-inicio" disabled> às
+                            <input type="time" class="horario-manha-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Almoço:</label>
+                            <input type="time" class="horario-almoco-inicio" disabled> às
+                            <input type="time" class="horario-almoco-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Tarde:</label>
+                            <input type="time" class="horario-tarde-inicio" disabled> às
+                            <input type="time" class="horario-tarde-fim" disabled>
+                        </div>
+                    </div>
+                </div>
+                <!-- Quinta-feira -->
+                <div class="dia">
+                    <label><input type="checkbox" class="dia-checkbox" value="quinta"> Quinta-feira</label>
+                    <div class="horarios-expandidos" style="display: none;">
+                        <div class="horario">
+                            <label>Manhã:</label>
+                            <input type="time" class="horario-manha-inicio" disabled> às
+                            <input type="time" class="horario-manha-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Almoço:</label>
+                            <input type="time" class="horario-almoco-inicio" disabled> às
+                            <input type="time" class="horario-almoco-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Tarde:</label>
+                            <input type="time" class="horario-tarde-inicio" disabled> às
+                            <input type="time" class="horario-tarde-fim" disabled>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sexta-feira -->
+                <div class="dia">
+                    <label><input type="checkbox" class="dia-checkbox" value="sexta"> Sexta-feira</label>
+                    <div class="horarios-expandidos" style="display: none;">
+                        <div class="horario">
+                            <label>Manhã:</label>
+                            <input type="time" class="horario-manha-inicio" disabled> às
+                            <input type="time" class="horario-manha-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Almoço:</label>
+                            <input type="time" class="horario-almoco-inicio" disabled> às
+                            <input type="time" class="horario-almoco-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Tarde:</label>
+                            <input type="time" class="horario-tarde-inicio" disabled> às
+                            <input type="time" class="horario-tarde-fim" disabled>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sábado -->
+                <div class="dia">
+                    <label><input type="checkbox" class="dia-checkbox" value="sabado"> Sábado</label>
+                    <div class="horarios-expandidos" style="display: none;">
+                        <div class="horario">
+                            <label>Manhã:</label>
+                            <input type="time" class="horario-manha-inicio" disabled> às
+                            <input type="time" class="horario-manha-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Almoço:</label>
+                            <input type="time" class="horario-almoco-inicio" disabled> às
+                            <input type="time" class="horario-almoco-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Tarde:</label>
+                            <input type="time" class="horario-tarde-inicio" disabled> às
+                            <input type="time" class="horario-tarde-fim" disabled>
+                        </div>
+                    </div>
+                </div>
+                <!-- Domingo -->
+                <div class="dia">
+                    <label><input type="checkbox" class="dia-checkbox" value="domingo"> Domingo</label>
+                    <div class="horarios-expandidos" style="display: none;">
+                        <div class="horario">
+                            <label>Manhã:</label>
+                            <input type="time" class="horario-manha-inicio" disabled> às
+                            <input type="time" class="horario-manha-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Almoço:</label>
+                            <input type="time" class="horario-almoco-inicio" disabled> às
+                            <input type="time" class="horario-almoco-fim" disabled>
+                        </div>
+                        <div class="horario">
+                            <label>Tarde:</label>
+                            <input type="time" class="horario-tarde-inicio" disabled> às
+                            <input type="time" class="horario-tarde-fim" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Limite de Agendamentos por Hora -->
+            <label for="limite-agendamentos">Limite de Agendamentos por Hora:</label>
+            <input type="number" id="limite-agendamentos" min="1" value="1" required>
+
+            <button type="submit">Criar Página</button>
+        </form>
+    </div>
+
+    <!-- Modal para cortar a logo -->
+    <div id="logo-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-logo-modal" class="close-modal">&times;</span>
+            <h2>Cortar Logo</h2>
+            <div id="logo-cropper-container">
+                <img id="logo-to-crop" src="#" alt="Logo para cortar">
+            </div>
+            <button id="crop-logo-button">Cortar e Salvar</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+
+</body>
+
+</html>

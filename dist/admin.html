@@ -1,29 +1,146 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Verificação de Login</title>
+  <title>Perfil do Usuário</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+  <!-- CSS do Cropper.js -->
 
-<script defer src="/scripts/admin.bundle.js"></script><link href="/styles/admin.css" rel="stylesheet"></head>
+<script defer src="/scripts/adminImport.bundle.js"></script><link href="/styles/adminImport.css" rel="stylesheet"></head>
 
 <body>
-  <div class="user-info">
-    <!-- Imagem do perfil -->
-    <img id="profile-image" src="/assets/images/user.png" alt="Imagem de Perfil">
+ 
+  <div class="container">
+    <!-- Cabeçalho do perfil -->
+    <div class="profile-header">
+      <img id="user-image" src="/assets/images/user.png" alt="Imagem de Perfil">
+      <!-- Adicione o campo @ no perfil -->
+      <div class="profile-info">
 
-    <p id="user-name">Nome: </p>
-    <p id="user-email">Email: </p>
-    <p id="user-uid">UID: </p>
-    <!-- Área de verificação de e-mail -->
+        <!-- Botão para abrir o modal de upload -->
+
+        <p onclick="openEditNameModal()">
+          <span id="user-name">Nome do Usuário</span>
+          <i class="fas fa-pencil-alt edit-icon"></i>
+        </p>
+
+        <p onclick="openEditArrobaModal()">
+          <span id="user-arroba">@ do Usuário</span>
+          <i class="fas fa-pencil-alt edit-icon"></i>
+        </p>
+
+        <p id="update-profile-button">
+          <span>Editar imagem</span>
+          <i class="fas fa-pencil-alt edit-icon"></i>
+        </p>
+
+        <p id="user-email">Email: usuario@example.com</p>
+        <p id="user-uid">UID: 123456</p>
+
+      </div>
+    </div>
+
+    <div class="profile-headerppp">
+      
+  <!-- Seção de Planos (Apenas para Empresas) -->
+  <section id="pricing" class="pricing empresa">
+    <h2>Planos</h2>
+    
+    <div class="pricing-container">
+      <div class="plan">
+        <div class="plan-header">
+          <h3>Grátis</h3>
+          <p class="price">R$ 0,00<span>/mês</span></p>
+        </div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> Agendamento Online</li>
+          <li><i class="fas fa-check"></i> Lembretes por Notificação</li>
+          <li><i class="fas fa-check"></i> Gestão de Clientes</li>
+          <li><i class="fas fa-check"></i> Suporte</li>
+          <li><i class="fas fa-ban" style="color: red;"></i> Página Profissional</li>
+          <li><i class="fas fa-ban" style="color: red;"></i> Sem Anúncios</li>
+          <li><i class="fas fa-ban" style="color: red;"></i> Sem Nossa Marca no Rodapé</li>
+        </ul>
+        <a href="/createpage.html" class="btn-plan" >Faser login para Assinar</a>
+      </div>
+      <div class="plan highlight">
+        <div class="plan-header">
+          <h3>Pago</h3>
+          <p class="price">R$ 25,00<span>/mês</span></p>
+        </div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> Agendamento Online</li>
+          <li><i class="fas fa-check"></i> Lembretes por Notificação</li>
+          <li><i class="fas fa-check"></i> Gestão de Clientes</li>
+          <li><i class="fas fa-check"></i> Suporte</li>
+          <li><i class="fas fa-check"></i> Página Profissional</li>
+          <li><i class="fas fa-check"></i> Sem Anúncios</li>
+          <li><i class="fas fa-check"></i> Sem Nossa Marca no Rodapé</li>
+        </ul>
+        <a href="#" class="btn-plan" onclick="openModal()">Faser login para Assinar</a>
+      </div>
+    </div>
+  </section>
+    </div>
+
+
+    <!-- Mensagem de verificação de e-mail -->
     <div id="verify-message" style="display: none;">
       <p>Seu e-mail não foi verificado.</p>
       <button id="btn-verify" onclick="sendVerificationEmail()">Enviar verificação</button>
     </div>
-</div>
 
- 
+
+  </div>
+
+  <!-- Modal de Upload -->
+  <div id="upload-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-upload-modal" class="close-modal">&times;</span>
+      <h2>Atualizar Foto de Perfil</h2>
+      <div id="image-cropper-container">
+        <img id="image-to-crop" src="#" alt="Imagem para recortar" style="display: none;">
+      </div>
+      <form id="upload-form">
+        <input type="file" id="file-input" accept="image/*" required>
+        <div id="progress-bar-container" style="display: none;">
+          <div id="progress-bar"></div>
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de Edição de Nome -->
+  <div id="edit-name-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-edit-modal" class="close-modal">&times;</span>
+      <h2>Editar Nome</h2>
+      <input type="text" id="edit-name-input" placeholder="Digite o novo nome">
+      <button onclick="saveName()">Salvar</button>
+    </div>
+  </div>
+
+
+  <!-- Modal de Edição de @ -->
+  <div id="edit-arroba-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-arroba-modal" class="close-modal">&times;</span>
+      <h2>Editar @</h2>
+      <input type="text" id="edit-arroba-input" placeholder="Digite o novo @ (máximo 23 caracteres)">
+      <button onclick="saveArroba()">Salvar</button>
+      <p id="arroba-error" style="color: red; display: none;">Este @ já está em uso.</p>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+  <!-- JavaScript do Cropper.js -->
+
 </body>
 
 </html>

@@ -20,13 +20,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n// Menu Hambúrguer\nvar mobi
 
 /***/ }),
 
-/***/ "./src/scriptsImport/index.js":
-/*!************************************!*\
-  !*** ./src/scriptsImport/index.js ***!
-  \************************************/
+/***/ "./src/scriptsImport/indexImport.js":
+/*!******************************************!*\
+  !*** ./src/scriptsImport/indexImport.js ***!
+  \******************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scripts_indexUi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scripts/indexUi.js */ \"./src/scripts/indexUi.js\");\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/main.css */ \"./src/styles/main.css\");\n// Importa os arquivos JavaScript\n // Lógica da interface do usuário\n\n// Importa os arquivos CSS\n // Estilos gerais\n\n//# sourceURL=webpack://agendou/./src/scriptsImport/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scripts_indexUi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scripts/indexUi.js */ \"./src/scripts/indexUi.js\");\n/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/main.css */ \"./src/styles/main.css\");\n// Importa os arquivos JavaScript\n // Lógica da interface do usuário\n\n// Importa os arquivos CSS\n // Estilos gerais\n\n//# sourceURL=webpack://agendou/./src/scriptsImport/indexImport.js?");
 
 /***/ }),
 
@@ -83,7 +83,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/scriptsImport/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/scriptsImport/indexImport.js");
 /******/ 	
 /******/ })()
 ;
