@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Preenche os campos do formulário
       if (pageNameInput) pageNameInput.value = pageData.pageName;
-      if (pageUrlPreview) pageUrlPreview.textContent = `https://agendou.web.app/${pageData.pageUrl}`;
+      if (pageUrlPreview) pageUrlPreview.textContent = `https://agendou.web.app/id-${pageData.pageUrl}`;
       if (modalidadeSelect) modalidadeSelect.value = pageData.modalidade;
       if (paisInput) paisInput.value = pageData.endereco.pais;
       if (estadoInput) estadoInput.value = pageData.endereco.estado;
@@ -192,8 +192,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Atualiza o link da página em tempo real
     if (pageNameInput && pageUrlPreview) {
       pageNameInput.addEventListener('input', () => {
-        const pageUrl = pageNameInput.value.trim().toLowerCase().replace(/\s+/g, '-');
-        pageUrlPreview.textContent = `https://agendou.web.app/${pageUrl}`;
+        // Remove espaços extras, converte para minúsculas e substitui caracteres especiais
+        const pageUrl = pageNameInput.value
+          .trim() // Remove espaços no início e no fim
+          .toLowerCase() // Converte para minúsculas
+          .replace(/\s+/g, '-') // Substitui espaços por hífens
+          .replace(/[^a-z0-9-]/g, ''); // Remove caracteres especiais, mantendo apenas letras, números e hífens
+
+        // Atualiza o texto do preview da URL
+        pageUrlPreview.textContent = `https://agendou.web.app/id-${pageUrl}`;
       });
     }
 
