@@ -9,7 +9,7 @@ body {
 
 .container {
   background: white;
-  border-radius: 10px;
+  border-radius: 7px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   max-width: 600px;
@@ -35,7 +35,7 @@ label {
 input,
 select,
 button {
-  padding: 10px;
+  padding: 7px;
   border: 1px solid #ddd;
   border-radius: 7px;
   font-size: 16px;
@@ -44,7 +44,7 @@ button {
 
 
 button {
-  background-color: #007bff;
+  background-color: #14c555;
   color: white;
   border: none;
   cursor: pointer;
@@ -60,7 +60,7 @@ button:hover {
 }
 
 #logo-preview img {
-  margin-top: 10px;
+  margin-top: 7px;
   border-radius: 7px;
 }
 
@@ -68,7 +68,7 @@ button:hover {
 #logo-cropper-container {
   width: 100%;
   height: 300px;
-  margin: 10px auto;
+  margin: 7px auto;
   overflow: hidden;
 }
 
@@ -81,34 +81,34 @@ button:hover {
 #horarios-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 7px;
 }
 
 .dia {
   border: 1px solid #ddd;
   border-radius: 7px;
-  padding: 10px;
+  padding: 7px;
   background-color: #f9f9f9;
 }
 
 .dia label {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
   cursor: pointer;
 }
 
 .horarios-expandidos {
-  margin-top: 10px;
+  margin-top: 7px;
   padding-left: 20px;
-  border-left: 2px solid #007bff;
+  border-left: 2px solid #14c555;
 }
 
 .horario {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 7px;
+  margin-bottom: 7px;
 }
 
 .horario label {
@@ -126,13 +126,13 @@ button:hover {
   width: 100%;
   background-color: #f3f3f3;
   border-radius: 7px;
-  margin-top: 10px;
+  margin-top: 7px;
 }
 
 #progress-bar {
   width: 0;
-  height: 10px;
-  background-color: #007bff;
+  height: 7px;
+  background-color: #14c555;
   border-radius: 7px;
   transition: width 0.3s ease;
 }
@@ -179,8 +179,8 @@ button:hover {
 .custom-file-button {
   display: inline-flex;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #007BFF;
+  padding: 7px 20px;
+  background-color: #14c555;
   color: white;
   border-radius: 7px;
   cursor: pointer;
@@ -188,20 +188,22 @@ button:hover {
   width: auto;
 }
 
+
 .custom-file-button:hover {
   background-color: #000000;
   /* Muda a cor ao passar o mouse */
 }
 
+
 /* Estilo do ícone */
 .custom-file-button i {
-  margin-right: 10px;
+  margin-right: 7px;
   /* Espaço entre o ícone e o texto */
 }
 
 /* Estilo do nome do arquivo */
 .file-name {
-  margin-left: 10px;
+  margin-left: 7px;
   color: #2e2e2e;
   font-size: 14px;
 }
@@ -213,7 +215,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 7px;
   border-bottom: 1px solid #ccc;
 }
 
@@ -221,7 +223,7 @@ button:hover {
 .page-item-content {
   display: flex;
   align-items: center;
-  gap: 10px; /* Espaço entre a imagem e o texto */
+  gap: 7px; /* Espaço entre a imagem e o texto */
 }
 
 /* Estilo para a logo da página */
@@ -234,10 +236,10 @@ button:hover {
 
 /* Estilo para o botão de seleção */
 .page-item button {
-  background-color: #007bff;
+  background-color: #14c555;
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 5px 7px;
   border-radius: 5px;
   cursor: pointer;
 }

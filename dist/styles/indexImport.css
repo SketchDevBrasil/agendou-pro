@@ -24,7 +24,7 @@ body {
   /* Cor de fundo verde */
   color: white;
   /* Cor do texto (opcional, para melhor contraste) */
-  padding: 10px 20px;
+  padding: 7px 20px;
   /* Espaçamento interno */
   border-radius: 25px;
   /* Bordas arredondadas */
@@ -40,7 +40,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -128,8 +128,8 @@ nav {
   margin-bottom: 0px;
   text-decoration: none;
   padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 7px;
+  padding-right: 7px;
   border-radius: 25px;
   font-size: 18px;
   transition: background 0.7s
@@ -239,7 +239,7 @@ nav {
   /* Define o tamanho máximo do contêiner */
   max-width: 100%; /* Garante que o texto não ultrapasse a largura da tela */
   /* Adiciona um espaçamento interno (opcional) */
-  padding: 10px;
+  padding: 7px;
 }
 
 .hero-content p {
@@ -254,7 +254,7 @@ nav {
   max-width: 100%; /* Garante que o texto não ultrapasse a largura da tela */
 
   /* Adiciona um espaçamento interno (opcional) */
-  padding: 10px;
+  padding: 7px;
 
   /* Centraliza o texto (opcional) */
   text-align: center;
@@ -287,7 +287,7 @@ nav {
   align-items: center;
   /* Centraliza verticalmente */
   margin-top: 20px;
-  gap: 10px;
+  gap: 7px;
   /* Espaçamento entre os botões */
   border-radius: 25px;
   border: 2px;
@@ -297,7 +297,7 @@ nav {
 
 .toggle-buttons button {
   width: 130px;
-  padding: 10px 20px;
+  padding: 7px 20px;
   font-size: 16px;
   border: 2px solid #14c555;
   /* Contorno verde de 2px */
@@ -423,11 +423,11 @@ nav {
   background: rgba(255, 255, 255, 0.9);
   padding: 2rem;
   border-radius: 15px;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.1);
   text-align: left;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(7px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -440,7 +440,7 @@ nav {
   width: 100%;
   height: 6px;
   background: #14c555;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 7px 7px;
 }
 
 /* Efeito de flutuação ao passar o mouse */
@@ -517,7 +517,7 @@ nav {
 }
 
 .benefit:hover {
-  transform: translateY(-10px);
+  transform: translateY(-7px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -591,7 +591,7 @@ nav {
 }
 
 .plan:hover {
-  transform: translateY(-10px);
+  transform: translateY(-7px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
@@ -755,8 +755,8 @@ h2 {
 .contact {
   background-color: #fff;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   margin: 2rem auto;
 }
@@ -779,7 +779,7 @@ h2 {
 
 .contact input:focus,
 .contact textarea:focus {
-  border-color: #007bff;
+  border-color: #14c555;
 }
 
 .contact textarea {
@@ -788,7 +788,7 @@ h2 {
 }
 
 .contact button {
-  background-color: #007bff;
+  background-color: #14c555;
   color: #fff;
   padding: 0.75rem;
   border: none;
@@ -829,9 +829,9 @@ h2 {
   background: transparent;
   position: sticky;
   top: 0;
-  border-radius: 10px;
+  border-radius: 7px;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
   display: flex; /* Enable Flexbox */
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
@@ -841,7 +841,7 @@ h2 {
 .modal-content {
   background-color: #fff;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 7px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   max-width: 600px;
   width: 90%;
@@ -870,7 +870,7 @@ h2 {
 
 .input-field {
   width: 100%;
-  padding: 10px;
+  padding: 7px;
   border: 1px solid #ccc;
   border-radius: 7px;
   font-size: 16px;
@@ -885,7 +885,7 @@ h2 {
 
 .icon {
   position: absolute;
-  right: 10px;
+  right: 7px;
   top: 50%;
   transform: translateY(-50%);
   width: 20px;
@@ -896,7 +896,7 @@ h2 {
 .btn {
   background-color: #14c555;
   color: white;
-  padding: 10px;
+  padding: 7px;
   width: 100%;
   border: none;
   border-radius: 7px;
@@ -912,7 +912,7 @@ h2 {
 .btnGoogle {
   background-color: #fff;
   color: #333;
-  padding: 10px;
+  padding: 7px;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 7px;
@@ -933,10 +933,10 @@ h2 {
 #toggle-text,
 #forgot-password-text,
 #resend-verification {
-  color: #007bff;
+  color: #14c555;
   cursor: pointer;
   text-align: center;
-  margin: 10px 0;
+  margin: 7px 0;
   transition: color 0.3s ease;
 }
 
@@ -972,7 +972,7 @@ h2 {
 #generic-modal .modal-content {
   background-color: #fff;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 7px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   max-width: 400px;
   width: 100%;
@@ -982,8 +982,8 @@ h2 {
 
 #generic-modal .close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 7px;
+  right: 7px;
   font-size: 24px;
   color: #888;
   cursor: pointer;
@@ -995,15 +995,15 @@ h2 {
 }
 
 #generic-modal .btn {
-  background-color: #007bff;
+  background-color: #14c555;
   color: white;
-  padding: 10px;
+  padding: 7px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease;
-  margin-top: 10px;
+  margin-top: 7px;
 }
 
 #generic-modal .btn:hover {
@@ -1033,9 +1033,9 @@ h2 {
   gap: 1.5rem;
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.1);
   text-align: left;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(7px);
 }
 
 /* Estilização dos itens da FAQ */
@@ -1043,7 +1043,7 @@ h2 {
   padding: 15px;
   border-left: 5px solid #14c555;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 7px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }

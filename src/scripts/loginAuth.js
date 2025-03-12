@@ -257,6 +257,7 @@ window.verifyOTP = function () {
     });
 };
 
+
 // Reenviar código de verificação
 window.resendVerificationCode = function () {
   const phoneInput = document.getElementById("phone").value;

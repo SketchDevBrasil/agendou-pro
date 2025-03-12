@@ -17,17 +17,25 @@ body {
 
 
 .emBreve {
-  background-color: #14c555;
+  background: #2c333b;
   /* Cor de fundo verde */
   color: white;
   /* Cor do texto (opcional, para melhor contraste) */
-  padding: 10px 20px;
+  padding: 7px 20px;
   /* Espaçamento interno */
-  border-radius: 25px;
+  border-radius: 10px;
   /* Bordas arredondadas */
   display: inline-block;
   /* Para que o fundo se ajuste ao conteúdo */
 }
+
+.emBreve:hover 
+{
+  background-color: #14c555;
+}
+
+
+
 
 /* Menu Bar */
 header {
@@ -37,7 +45,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
 }
 
 nav {
@@ -56,7 +64,8 @@ nav {
 .logoAgendou {
   width: 250px;
   height: 80px;
-  object-fit: contain; /* Mantém a proporção dentro do espaço */
+  object-fit: contain;
+  /* Mantém a proporção dentro do espaço */
 }
 
 
@@ -93,7 +102,6 @@ nav {
 
 .buttons {
   display: flex;
-
 }
 
 
@@ -116,25 +124,24 @@ nav {
 /* Estilo do bt login */
 
 .btn-login {
-  width: 170px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #14c555;
-  margin: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  text-decoration: none;
-  padding: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 25px;
-  font-size: 18px;
-  transition: background 0.7s
-}
-
-.btn-login {
-  background: transparent;
+  width: 100%;
+  min-width: 170px;
+  padding: 7px 20px;
+  font-size: 16px;
   border: 2px solid #14c555;
+  /* Contorno verde de 2px */
+  border-radius: 10px;
+  /* Arredondamento de 25px */
+  cursor: pointer;
+  background-color: transparent;
+  /* Fundo transparente */
+  color: #e3e9e6;
+  /* Cor do texto verde */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  flex: 1;
+  /* Faz os botões terem o mesmo tamanho */
+  text-align: center;
+  /* Centraliza o texto dentro dos botões */
 }
 
 
@@ -149,7 +156,7 @@ nav {
 @media (max-width: 768px) {
 
   .btn-login {
-    width: 77px;
+    width: 100px;
     font-size: 16px;
   }
 
@@ -157,9 +164,10 @@ nav {
   .logoAgendou {
     width: 140px;
     height: 50px;
-    object-fit: contain; /* Mantém a proporção dentro do espaço */
+    object-fit: contain;
+    /* Mantém a proporção dentro do espaço */
   }
-  
+
 
   .menu-toggle {
     display: block;
@@ -224,86 +232,119 @@ nav {
 .hero-content {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto; /* Centraliza o conteúdo */
 }
+
+/* Estilos para telas menores (tablets) */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 15px;
+  }
+}
+
+/* Estilos para telas muito pequenas (celulares) */
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 10px;
+  }
+}
+
 
 .hero-content h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  word-wrap: break-word; /* Compatibilidade com navegadores mais antigos */
-  overflow-wrap: break-word; /* Padrão moderno para quebra de palavras */
+  word-wrap: break-word;
+  /* Compatibilidade com navegadores mais antigos */
+  overflow-wrap: break-word;
+  /* Padrão moderno para quebra de palavras */
   /* Preserva espaços em branco e quebras de linha */
-  white-space: normal; /* Permite que o texto quebre naturalmente */
+  white-space: normal;
+  /* Permite que o texto quebre naturalmente */
   /* Define o tamanho máximo do contêiner */
-  max-width: 100%; /* Garante que o texto não ultrapasse a largura da tela */
+  max-width: 100%;
+  /* Garante que o texto não ultrapasse a largura da tela */
   /* Adiciona um espaçamento interno (opcional) */
-  padding: 10px;
+  padding: 7px;
 }
+
 
 .hero-content p {
   /* Quebra de palavras longas */
-  word-wrap: break-word; /* Compatibilidade com navegadores mais antigos */
-  overflow-wrap: break-word; /* Padrão moderno para quebra de palavras */
+  word-wrap: break-word;
+  /* Compatibilidade com navegadores mais antigos */
+  overflow-wrap: break-word;
+  /* Padrão moderno para quebra de palavras */
 
   /* Preserva espaços em branco e quebras de linha */
-  white-space: normal; /* Permite que o texto quebre naturalmente */
+  white-space: normal;
+  /* Permite que o texto quebre naturalmente */
 
   /* Define o tamanho máximo do contêiner */
-  max-width: 100%; /* Garante que o texto não ultrapasse a largura da tela */
+  max-width: 100%;
+  /* Garante que o texto não ultrapasse a largura da tela */
 
   /* Adiciona um espaçamento interno (opcional) */
-  padding: 10px;
+  padding: 7px;
 
   /* Centraliza o texto (opcional) */
   text-align: center;
 
 }
 
+
 .hero-content .btn-cta {
   background: #14c555;
   color: #fff;
   padding: 0.8rem 2rem;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 1.1rem;
   transition: background 0.3s;
 }
+
 
 .hero-content .btn-cta:hover {
   background: #14c555;
 }
 
 
-
-
 /* Estilos para os botões de alternância */
 .toggle-buttons {
   width: 100%;
+  max-width: 700px;
   display: flex;
   justify-content: center;
   /* Centraliza horizontalmente */
   align-items: center;
   /* Centraliza verticalmente */
   margin-top: 20px;
-  gap: 10px;
+  gap: 7px;
   /* Espaçamento entre os botões */
-  border-radius: 25px;
+  border-radius: 10px;
   border: 2px;
   background-color: rgba(0, 0, 0, 0.3);
   padding: 17px;
 }
 
 .toggle-buttons button {
-  width: 130px;
-  padding: 10px 20px;
+  width: 100%;
+  padding: 7px 20px;
   font-size: 16px;
   border: 2px solid #14c555;
   /* Contorno verde de 2px */
-  border-radius: 25px;
+  border-radius: 10px;
   /* Arredondamento de 25px */
   cursor: pointer;
   background-color: transparent;
   /* Fundo transparente */
-  color: #14c555;
+  color: #e3e9e6;
   /* Cor do texto verde */
   transition: background-color 0.3s ease, color 0.3s ease;
   flex: 1;
@@ -312,8 +353,9 @@ nav {
   /* Centraliza o texto dentro dos botões */
 }
 
+
 .toggle-buttons button.active {
-  background-color: #14c555;
+  background-color: #000000;
   /* Fundo verde quando ativo */
   color: white;
   /* Texto branco quando ativo */
@@ -344,7 +386,7 @@ nav {
 
 .funcionalidades .subtitle {
   font-size: 1.2rem;
-  color: #666;
+  color: #333;
   margin-bottom: 4rem;
 }
 
@@ -372,8 +414,10 @@ nav {
 .funcionalidades {
   padding: 4rem 2rem;
   text-align: center;
-  background: #f9f9f9; /* Fundo mais claro */
+  background: #f9f9f9;
+  /* Fundo mais claro */
 }
+
 
 /* Título e subtítulo */
 .funcionalidades h2 {
@@ -384,7 +428,7 @@ nav {
 
 .funcionalidades .subtitle {
   font-size: 1.2rem;
-  color: #666;
+  color: #333;
   margin-bottom: 3rem;
 }
 
@@ -396,6 +440,7 @@ nav {
   padding: 0 1rem;
 }
 
+
 /* Layout: 1 coluna (mobile), 2 colunas (tablet), 3 colunas (desktop) */
 @media (max-width: 600px) {
   .funcionalidades-container {
@@ -403,11 +448,13 @@ nav {
   }
 }
 
+
 @media (min-width: 601px) and (max-width: 1024px) {
   .funcionalidades-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 
 @media (min-width: 1025px) {
   .funcionalidades-container {
@@ -415,18 +462,20 @@ nav {
   }
 }
 
+
 /* Cartões de Funcionalidade */
 .funcionalidade {
   background: rgba(255, 255, 255, 0.9);
   padding: 2rem;
   border-radius: 15px;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.1);
   text-align: left;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(7px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 /* Linha verde inferior */
 .funcionalidade::after {
@@ -437,14 +486,17 @@ nav {
   width: 100%;
   height: 6px;
   background: #14c555;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 7px 7px;
 }
+
 
 /* Efeito de flutuação ao passar o mouse */
 .funcionalidade:hover {
   transform: translateY(-8px);
   box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
+  background: #d2ffd2;
 }
+
 
 /* Ícones */
 .funcionalidade i {
@@ -453,6 +505,7 @@ nav {
   margin-bottom: 1rem;
 }
 
+
 /* Títulos */
 .funcionalidade h3 {
   font-size: 1.3rem;
@@ -460,11 +513,13 @@ nav {
   color: #2c333b;
 }
 
+
 /* Descrição */
 .funcionalidade p {
   font-size: 1rem;
-  color: #555;
+  color: #333;
 }
+
 
 /* Rótulo "Em Breve" */
 .funcionalidade .emBreve {
@@ -473,8 +528,6 @@ nav {
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
-
-
 
 
 
@@ -493,7 +546,7 @@ nav {
 
 .benefits .subtitle {
   font-size: 1.2rem;
-  color: #666;
+  color: #333;
   margin-bottom: 4rem;
 }
 
@@ -514,8 +567,9 @@ nav {
 }
 
 .benefit:hover {
-  transform: translateY(-10px);
+  transform: translateY(-7px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background: #d2ffd2;
 }
 
 .benefit .icon-container {
@@ -542,7 +596,7 @@ nav {
 
 .benefit p {
   font-size: 1rem;
-  color: #666;
+  color: #333;
 }
 
 
@@ -563,7 +617,7 @@ nav {
 
 .pricing .subtitle {
   font-size: 1.1rem;
-  color: #666;
+  color: #333;
   margin-bottom: 3rem;
 }
 
@@ -588,8 +642,9 @@ nav {
 }
 
 .plan:hover {
-  transform: translateY(-10px);
+  transform: translateY(-7px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  background: #d2ffd2;
 }
 
 .plan.highlight {
@@ -638,21 +693,25 @@ nav {
 }
 
 
-.btn-plan {
-  background: #14c555;
+.btnloginplan {
+  background: #000000;
   color: #fff;
   padding: 0.8rem 2rem;
+  margin: 7px;
   text-decoration: none;
-  border-radius: 25px;
+  border-radius: 7px;
   font-size: 1rem;
   transition: background 0.3s;
   display: inline-block;
   width: 100%;
+  max-width: 600px;
   text-align: center;
 }
 
-.btn-plan:hover {
-  background: #57c9ec;
+
+.btnloginplan:hover {
+  background: #14c555;
+  border: 1px solid #000000;
 }
 
 /* Responsividade */
@@ -666,56 +725,6 @@ nav {
     max-width: 100%;
   }
 }
-
-
-
-
-/* Seção de Contato */
-.contact {
-  padding: 4rem 2rem;
-  text-align: center;
-  background: #f4f4f4;
-}
-
-.contact h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #2c333b;
-}
-
-.contact form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact input,
-.contact textarea {
-  padding: 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-
-.contact button {
-  background: #14c555;
-  color: #fff;
-  padding: 0.8rem 2rem;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-
-.contact button:hover {
-  background: #14c555;
-}
-
 
 
 
@@ -752,8 +761,8 @@ h2 {
 .contact {
   background-color: #fff;
   padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   margin: 2rem auto;
 }
@@ -776,7 +785,7 @@ h2 {
 
 .contact input:focus,
 .contact textarea:focus {
-  border-color: #007bff;
+  border-color: #14c555;
 }
 
 .contact textarea {
@@ -785,7 +794,7 @@ h2 {
 }
 
 .contact button {
-  background-color: #007bff;
+  background-color: #000000;
   color: #fff;
   padding: 0.75rem;
   border: none;
@@ -796,65 +805,7 @@ h2 {
 }
 
 .contact button:hover {
-  background-color: #0056b3;
-}
-
-
-/* Modal de Login */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: flex-start; /* Alinha no topo */
-  padding-top: 20px; /* Adiciona um espaço no topo */
-}
-
-
-.modal h1 {
-  font-size: 22px;
-  color: #14c555;
-}
-
-
-.HeaderLogin {
-  background: transparent;
-  position: sticky;
-  top: 0;
-  border-radius: 10px;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  display: flex; /* Enable Flexbox */
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-  gap: 1rem; /* Add space between elements */
-}
-
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  max-width: 600px;
-  width: 90%;
-  position: relative;
-}
-
-.close {
-  color: #14c555;
-  width: 25px;
-  height: 25px;
-  margin-left: 50px;
-}
-
-
-.modal-content .close:hover {
-  color: #333;
+  background-color: #14c555;
 }
 
 
@@ -865,147 +816,6 @@ h2 {
 }
 
 
-.input-field {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 7px;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.3s ease;
-  margin-bottom: 7px;
-}
-
-.input-field:focus {
-  border-color: #14c555;
-}
-
-.icon {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
-
-.btn {
-  background-color: #14c555;
-  color: white;
-  padding: 10px;
-  width: 100%;
-  border: none;
-  border-radius: 7px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #0056b3;
-}
-
-.btnGoogle {
-  background-color: #fff;
-  color: #333;
-  padding: 10px;
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 7px;
-  margin-bottom: 7px;
-  cursor: pointer;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  transition: background-color 0.3s ease;
-}
-
-.btnGoogle:hover {
-  background-color: #f1f1f1;
-}
-
-#toggle-text,
-#forgot-password-text,
-#resend-verification {
-  color: #007bff;
-  cursor: pointer;
-  text-align: center;
-  margin: 10px 0;
-  transition: color 0.3s ease;
-}
-
-#toggle-text:hover,
-#forgot-password-text:hover {
-  color: #0056b3;
-}
-
-.error {
-  color: red;
-  font-size: 14px;
-  text-align: center;
-  margin-bottom: 7px;
-}
-
-
-/* Estilo do modal genérico */
-#generic-modal {
-  display: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: flex-start; /* Alinha no topo */
-  z-index: 1002;
-  padding-top: 20px; /* Adiciona um espaço no topo */
-}
-
-
-#generic-modal .modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  width: 100%;
-  position: relative;
-  text-align: center;
-}
-
-#generic-modal .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  color: #888;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-#generic-modal .close:hover {
-  color: #333;
-}
-
-#generic-modal .btn {
-  background-color: #007bff;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
-}
-
-#generic-modal .btn:hover {
-  background-color: #0056b3;
-}
 
 
 
@@ -1030,9 +840,9 @@ h2 {
   gap: 1.5rem;
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 7px 30px rgba(0, 0, 0, 0.1);
   text-align: left;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(7px);
 }
 
 /* Estilização dos itens da FAQ */
@@ -1040,15 +850,18 @@ h2 {
   padding: 15px;
   border-left: 5px solid #14c555;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 7px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Efeito de flutuação ao passar o mouse */
 .faq-item:hover {
-  transform: translateY(-5px); /* Move o item 5px para cima */
-  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15); /* Aumenta a sombra para efeito de elevação */
+  transform: translateY(-5px);
+  /* Move o item 5px para cima */
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15);
+  /* Aumenta a sombra para efeito de elevação */
+  background: #d2ffd2;
 }
 
 .faq-item h3 {
@@ -1060,7 +873,7 @@ h2 {
 
 .faq-item p {
   font-size: 1rem;
-  color: #555;
+  color: #333;
 }
 
 
@@ -1087,11 +900,15 @@ footer {
 
 
 .politicas-link {
-  color: #14c555; /* Cor azul */
-  text-decoration: underline; /* Sublinhado */
-  transition: color 0.3s ease; /* Transição suave de cor */
+  color: #14c555;
+  /* Cor azul */
+  text-decoration: underline;
+  /* Sublinhado */
+  transition: color 0.3s ease;
+  /* Transição suave de cor */
 }
 
 .politicas-link:hover {
-  color: #6cf3d5; /* Cor azul mais escura ao passar o mouse */
+  color: #6cf3d5;
+  /* Cor azul mais escura ao passar o mouse */
 }
