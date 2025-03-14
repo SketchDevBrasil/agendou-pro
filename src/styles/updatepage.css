@@ -16,6 +16,29 @@ body {
   width: 100%;
 }
 
+
+.HeaderTop {
+  background: white;
+  position: sticky;
+  top: 0;
+  margin-bottom: 17px;
+  border-radius: 7px;
+  z-index: 1000;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.close {
+  color: #14c555;
+  width: 25px;
+  height: 25px;
+  margin-left: 50px;
+}
+
+
 h1 {
   text-align: center;
   color: #333;
@@ -41,6 +64,32 @@ button {
   font-size: 16px;
   margin: 3px 0;
 }
+
+
+textarea {
+  width: 100%;
+  /* Ocupa 100% da largura do contêiner pai */
+  box-sizing: border-box;
+  /* Inclui padding e borda na largura total */
+  max-width: 100%;
+  /* Garante que não ultrapasse a largura do contêiner pai */
+  padding: 8px;
+  /* Espaçamento interno para melhorar a aparência */
+  margin: 0;
+  /* Remove margens padrão */
+  border: 1px solid #ccc;
+  /* Borda simples */
+  border-radius: 4px;
+  /* Bordas arredondadas */
+  font-size: 17px;
+  /* Tamanho da fonte */
+}
+
+textarea {
+  resize: vertical;
+  /* Permite redimensionar verticalmente, mas não horizontalmente */
+}
+
 
 
 button {
@@ -223,15 +272,19 @@ button:hover {
 .page-item-content {
   display: flex;
   align-items: center;
-  gap: 7px; /* Espaço entre a imagem e o texto */
+  gap: 7px;
+  /* Espaço entre a imagem e o texto */
 }
 
 /* Estilo para a logo da página */
 .page-logo {
-  width: 50px; /* Ajuste o tamanho conforme necessário */
+  width: 50px;
+  /* Ajuste o tamanho conforme necessário */
   height: 50px;
-  border-radius: 50%; /* Para imagens redondas */
-  object-fit: cover; /* Garante que a imagem cubra o espaço */
+  border-radius: 50%;
+  /* Para imagens redondas */
+  object-fit: cover;
+  /* Garante que a imagem cubra o espaço */
 }
 
 /* Estilo para o botão de seleção */

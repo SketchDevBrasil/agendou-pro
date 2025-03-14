@@ -46,7 +46,7 @@ header {
     margin: 0;
     text-decoration: none;
     padding: 5px 7px;
-    border-radius: 25px;
+    border-radius: 7px;
     font-size: 18px;
     transition: background 0.7s;
     background: transparent;
@@ -155,7 +155,7 @@ header {
 }
 
 .btn {
-    background-color: #14c555;
+    background-color: #000000;
     color: white;
     padding: 7px;
     width: 100%;
@@ -167,7 +167,7 @@ header {
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-color: #14c555;
 }
 
 .btnGoogle {
@@ -187,8 +187,9 @@ header {
     transition: background-color 0.3s ease;
 }
 
+
 .btnGoogle:hover {
-    background-color: #f1f1f1;
+    background-color: #14c555;
 }
 
 #toggle-text,
@@ -203,7 +204,7 @@ header {
 
 #toggle-text:hover,
 #forgot-password-text:hover {
-    color: #0056b3;
+    color: #14c555;
 }
 
 .error {
@@ -253,17 +254,17 @@ header {
 }
 
 #generic-modal .close:hover {
-    color: #333;
+    color: #14c555;
 }
 
 
 
 #generic-modal .btn {
-    background-color: #14c555;
+    background-color: #000000;
     color: white;
     padding: 7px;
     border: none;
-    border-radius: 5px;
+    border-radius: 7px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
@@ -271,7 +272,7 @@ header {
 }
 
 #generic-modal .btn:hover {
-    background-color: #0056b3;
+    background-color: #14c555;
 }
 
 

@@ -19,6 +19,29 @@ body {
   width: 100%;
 }
 
+
+.HeaderTop {
+  background: white;
+  position: sticky;
+  top: 0;
+  margin-bottom: 17px;
+  border-radius: 7px;
+  z-index: 1000;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.close {
+  color: #14c555;
+  width: 25px;
+  height: 25px;
+  margin-left: 50px;
+}
+
+
 h1 {
   text-align: center;
   color: #333;
@@ -46,6 +69,32 @@ button {
 }
 
 
+textarea {
+  width: 100%;
+  /* Ocupa 100% da largura do contêiner pai */
+  box-sizing: border-box;
+  /* Inclui padding e borda na largura total */
+  max-width: 100%;
+  /* Garante que não ultrapasse a largura do contêiner pai */
+  padding: 8px;
+  /* Espaçamento interno para melhorar a aparência */
+  margin: 0;
+  /* Remove margens padrão */
+  border: 1px solid #ccc;
+  /* Borda simples */
+  border-radius: 4px;
+  /* Bordas arredondadas */
+  font-size: 17px;
+  /* Tamanho da fonte */
+}
+
+textarea {
+  resize: vertical;
+  /* Permite redimensionar verticalmente, mas não horizontalmente */
+}
+
+
+
 button {
   background-color: #14c555;
   color: white;
@@ -54,12 +103,12 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #000000;
 }
 
 #page-url-preview {
   font-size: 14px;
-  color: #555;
+  color: #0772ff;
 }
 
 #logo-preview img {
@@ -78,7 +127,6 @@ button:hover {
 #logo-to-crop {
   max-width: 100%;
 }
-
 
 
 
@@ -192,10 +240,12 @@ button:hover {
   width: auto;
 }
 
+
 .custom-file-button:hover {
   background-color: #000000;
   /* Muda a cor ao passar o mouse */
 }
+
 
 /* Estilo do ícone */
 .custom-file-button i {
@@ -208,4 +258,48 @@ button:hover {
   margin-left: 7px;
   color: #2e2e2e;
   font-size: 14px;
+}
+
+
+
+/* Estilo para o item da lista de páginas */
+.page-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Estilo para o conteúdo do item (imagem + texto) */
+.page-item-content {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  /* Espaço entre a imagem e o texto */
+}
+
+/* Estilo para a logo da página */
+.page-logo {
+  width: 50px;
+  /* Ajuste o tamanho conforme necessário */
+  height: 50px;
+  border-radius: 50%;
+  /* Para imagens redondas */
+  object-fit: cover;
+  /* Garante que a imagem cubra o espaço */
+}
+
+/* Estilo para o botão de seleção */
+.page-item button {
+  background-color: #14c555;
+  color: white;
+  border: none;
+  padding: 5px 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.page-item button:hover {
+  background-color: #000000;
 }

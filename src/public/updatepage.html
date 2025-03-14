@@ -10,18 +10,30 @@
 </head>
 
 <body>
+
+
+  
   <div class="container">
-    <h1>Editar Página de Atendimento</h1>
+    <div class="HeaderTop"> <h1>Editar Página de Atendimento</h1>
+     <img src="../assets/images/close-icon.png" alt="Ícone de Email" class="close"
+        onclick="backPag()">
+    </div>
+   
     <form id="update-page-form">
       <!-- Nome da Página -->
       <label for="page-name">Nome da Página:</label>
       <input type="text" id="page-name" placeholder="Ex: Meu Salão" maxlength="30" required>
       <p id="page-url-preview">Link da página: <span id="page-url">https://agendou.web.app/id-</span></p>
 
+
+      <!-- Descrição (Slogan) -->
+      <label for="descricao">Descrição (Slogan):</label>
+      <textarea id="descricao" placeholder="Ex: O melhor salão da cidade!" maxlength="300" rows="4"></textarea>
+
+
       <!-- Modalidade do Negócio -->
       <label for="modalidade">Modalidade do Negócio:</label>
       <select id="modalidade" required>
-        <option value="">Selecione uma opção</option>
         <option value="salão-de-beleza">Salão de Beleza</option>
         <option value="barbearia">Barbearia</option>
         <option value="clinica-estetica">Clínica Estética</option>
@@ -39,7 +51,6 @@
         <option value="otica">Ótica</option>
         <option value="outro">Outro</option>
       </select>
-      <input type="text" id="outra-modalidade" placeholder="Digite a modalidade" style="display: none;">
 
       <!-- Endereço -->
       <label>Endereço:</label>
@@ -53,22 +64,22 @@
 
       <!-- Logo -->
       <label for="logo">Logo:</label>
-      
+
       <div id="logo-preview" style="display: none;">
         <img id="logo-image" src="#" alt="Pré-visualização da Logo" style="max-width: 100px;">
       </div>
 
       <div class="file-input-container">
-  <input type="file" id="logo" accept="image/*" class="hidden-file-input">
-  <label for="logo" class="custom-file-button">
-   
-    <span>Selecionar imagem</span>
-  </label>
-  <span id="file-name" class="file-name">
-    
-    Nenhum arquivo selecionado
-  </span>
-</div>
+        <input type="file" id="logo" accept="image/*" class="hidden-file-input">
+        <label for="logo" class="custom-file-button">
+
+          <span>Selecionar imagem</span>
+        </label>
+        <span id="file-name" class="file-name">
+
+          Nenhum arquivo selecionado
+        </span>
+      </div>
 
       <div id="progress-bar-container" style="display: none;">
         <div id="progress-bar"></div>
@@ -248,7 +259,7 @@
       <label for="limite-agendamentos">Limite de Agendamentos por Hora:</label>
       <input type="number" id="limite-agendamentos" min="1" value="1" required>
 
-    
+
 
       <button type="submit">Salvar Alterações</button>
     </form>

@@ -11,17 +11,27 @@
 
 <body>
     <div class="container">
-        <h1>Criar Página de Atendimento</h1>
+        <div class="HeaderTop">
+            <h1>Criar Página de Atendimento</h1>
+            <img src="../assets/images/close-icon.png" alt="Ícone de Email" class="close" onclick="backPag()">
+        </div>
+
         <form id="create-page-form">
             <!-- Nome da Página -->
             <label for="page-name">Nome da Página:</label>
+
             <input type="text" id="page-name" placeholder="Ex: Meu Salão" maxlength="30" required>
+
             <p id="page-url-preview">Link da página: <span id="page-url">https://agendou.web.app/</span></p>
+
+            <!-- Descrição (Slogan) -->
+            <label for="descricao">Descrição (Slogan):</label>
+            <textarea id="description" placeholder="Ex: O melhor salão da cidade!" maxlength="300" rows="4"></textarea>
+
 
             <!-- Modalidade do Negócio -->
             <label for="modalidade">Modalidade do Negócio:</label>
             <select id="modalidade" required>
-                <option value="">Selecione uma opção</option>
                 <option value="salão-de-beleza">Salão de Beleza</option>
                 <option value="barbearia">Barbearia</option>
                 <option value="clinica-estetica">Clínica Estética</option>
@@ -39,7 +49,6 @@
                 <option value="otica">Ótica</option>
                 <option value="outro">Outro</option>
             </select>
-            <input type="text" id="outra-modalidade" placeholder="Digite a modalidade" style="display: none;">
 
             <!-- Tipo de Página (Free ou Pro) -->
             <label for="tipo-pagina">Tipo de Página:</label>

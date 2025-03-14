@@ -86,7 +86,7 @@
   
 
   .create-page-btn {
-    background-color: #14c555; /* Cor de fundo verde */
+    background-color: #000000; /* Cor de fundo verde */
     color: white; /* Cor do texto */
     border: none; /* Remove bordas */
     padding: 15px 32px; /* Espaçamento interno */
@@ -101,7 +101,7 @@
   }
   
   .create-page-btn:hover {
-    background-color: #000000; /* Cor de fundo ao passar o mouse */
+    background-color: #14c555; /* Cor de fundo ao passar o mouse */
     transform: scale(1.05); /* Aumenta levemente o tamanho do botão */
   }
   

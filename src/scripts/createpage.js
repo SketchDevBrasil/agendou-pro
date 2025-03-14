@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Referências aos elementos do formulário
   const createPageForm = document.getElementById('create-page-form');
   const pageNameInput = document.getElementById('page-name');
+  const description = document.getElementById('description');
   const pageUrlPreview = document.getElementById('page-url');
   const modalidadeSelect = document.getElementById('modalidade');
   const outraModalidadeInput = document.getElementById('outra-modalidade');
@@ -144,42 +145,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // Função para fazer upload da logo
-// Função para fazer upload da logo
-const uploadLogo = async (blob, pageId) => { // Adicione o pageId como parâmetro
-  const user = auth.currentUser;
-  if (!user) {
-    alert('Usuário não autenticado. Faça login para continuar.');
-    return;
-  }
+  // Função para fazer upload da logo
+  const uploadLogo = async (blob, pageId) => { // Adicione o pageId como parâmetro
+    const user = auth.currentUser;
+    if (!user) {
+      alert('Usuário não autenticado. Faça login para continuar.');
+      return;
+    }
 
-  // Define o caminho no Storage com o UID do usuário e o ID da página
-  const logoRef = ref(storage, `logos/${user.uid}/${pageId}/logo`);
+    // Define o caminho no Storage com o UID do usuário e o ID da página
+    const logoRef = ref(storage, `logos/${user.uid}/${pageId}/logo`);
 
-  // Mostra a barra de progresso
-  if (progressBarContainer) progressBarContainer.style.display = 'block';
-  if (progressBar) progressBar.style.width = '0%';
+    // Mostra a barra de progresso
+    if (progressBarContainer) progressBarContainer.style.display = 'block';
+    if (progressBar) progressBar.style.width = '0%';
 
-  const uploadTask = uploadBytesResumable(logoRef, blob);
+    const uploadTask = uploadBytesResumable(logoRef, blob);
 
-  return new Promise((resolve, reject) => {
-    uploadTask.on('state_changed',
-      (snapshot) => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        if (progressBar) progressBar.style.width = `${progress}%`;
-      },
-      (error) => {
-        console.error('Erro ao fazer upload da logo:', error);
-        alert('Não foi possível fazer upload da logo.');
-        reject(error);
-      },
-      async () => {
-        const logoUrl = await getDownloadURL(uploadTask.snapshot.ref);
-        if (progressBarContainer) progressBarContainer.style.display = 'none';
-        resolve(logoUrl); // Retorna a URL da logo
-      }
-    );
-  });
-};
+    return new Promise((resolve, reject) => {
+      uploadTask.on('state_changed',
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          if (progressBar) progressBar.style.width = `${progress}%`;
+        },
+        (error) => {
+          console.error('Erro ao fazer upload da logo:', error);
+          alert('Não foi possível fazer upload da logo.');
+          reject(error);
+        },
+        async () => {
+          const logoUrl = await getDownloadURL(uploadTask.snapshot.ref);
+          if (progressBarContainer) progressBarContainer.style.display = 'none';
+          resolve(logoUrl); // Retorna a URL da logo
+        }
+      );
+    });
+  };
 
 
 
@@ -187,20 +188,21 @@ const uploadLogo = async (blob, pageId) => { // Adicione o pageId como parâmetr
   if (createPageForm) {
     createPageForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-  
+
       // Valida se pelo menos um horário foi definido
       if (!validateHorarios()) {
         return;
       }
-  
+
       const user = auth.currentUser;
       if (!user) {
         alert('Usuário não autenticado. Faça login para continuar.');
         return;
       }
-  
+
       // Coleta os dados do formulário
       const pageName = pageNameInput ? pageNameInput.value.trim() : '';
+      const description = document.getElementById('description') ? document.getElementById('description').value.trim() : '';
       const modalidade = modalidadeSelect ? modalidadeSelect.value : '';
       const endereco = {
         pais: paisInput ? paisInput.value.trim() : '',
@@ -212,14 +214,14 @@ const uploadLogo = async (blob, pageId) => { // Adicione o pageId como parâmetr
       const limiteAgendamentos = limiteAgendamentosInput ? parseInt(limiteAgendamentosInput.value, 10) : 1;
       const tipoPagina = tipoPaginaSelect ? tipoPaginaSelect.value : 'free';
       const statusPagina = tipoPagina === 'pro' && statusPaginaSelect ? statusPaginaSelect.value : 'ativo'; // Ativo/Inativo apenas para Pro
-  
+
       // Verifica se o nome da página é único
       const isUnique = await isPageNameUnique(pageName);
       if (!isUnique) {
         alert('Já existe uma página com esse nome. Escolha outro nome.');
         return;
       }
-  
+
       // Coleta os horários de atendimento
       const horarios = {};
       document.querySelectorAll('.dia').forEach(dia => {
@@ -232,7 +234,7 @@ const uploadLogo = async (blob, pageId) => { // Adicione o pageId como parâmetr
           const almocoFim = dia.querySelector('.horario-almoco-fim')?.value || '';
           const tardeInicio = dia.querySelector('.horario-tarde-inicio')?.value || '';
           const tardeFim = dia.querySelector('.horario-tarde-fim')?.value || '';
-  
+
           horarios[diaNome] = {
             manha: `${manhaInicio} às ${manhaFim}`,
             almoco: `${almocoInicio} às ${almocoFim}`,
@@ -240,21 +242,22 @@ const uploadLogo = async (blob, pageId) => { // Adicione o pageId como parâmetr
           };
         }
       });
-  
+
       // Cria a página no Firestore e obtém o ID
       const pageRef = doc(collection(db, 'pages')); // Gera um ID único
       const pageId = pageRef.id; // Obtém o ID da página
-  
+
       // Faz upload da logo (se houver)
       let logoUrl = null;
       if (logoImage && logoImage.src && logoImage.src !== '#') {
         const logoBlob = await fetch(logoImage.src).then((res) => res.blob());
         logoUrl = await uploadLogo(logoBlob, pageId); // Passa o pageId para o upload
       }
-  
+
       // Cria o objeto com os dados da página
       const pageData = {
         pageName: pageName,
+        description: description,
         pageUrl: pageName.toLowerCase().replace(/[^a-z0-9]/g, '-'),
         modalidade: modalidade,
         endereco: endereco,
@@ -267,11 +270,11 @@ const uploadLogo = async (blob, pageId) => { // Adicione o pageId como parâmetr
         ownerUid: user.uid,
         createdAt: new Date(),
       };
-  
+
       try {
         // Salva a página no Firestore
         await setDoc(pageRef, pageData);
-  
+
         alert('Página criada com sucesso!');
         window.location.href = '/updatepage.html'; // Redireciona para o perfil
       } catch (error) {
@@ -301,4 +304,10 @@ const uploadLogo = async (blob, pageId) => { // Adicione o pageId como parâmetr
       }
     });
   });
+
+  window.backPag = function () {
+    window.history.back();
+  };
+  
+
 });

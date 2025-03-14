@@ -5,6 +5,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 document.addEventListener('DOMContentLoaded', () => {
   const updatePageForm = document.getElementById('update-page-form');
   const pageNameInput = document.getElementById('page-name');
+  const descricaoInput = document.getElementById('descricao');
   const pageUrlPreview = document.getElementById('page-url');
   const modalidadeSelect = document.getElementById('modalidade');
   const outraModalidadeInput = document.getElementById('outra-modalidade');
@@ -84,13 +85,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
     // Carrega os dados da página selecionada
     const loadPageData = async (pageData) => {
       if (pageSelectionModal) pageSelectionModal.style.display = 'none';
 
       // Preenche os campos do formulário
       if (pageNameInput) pageNameInput.value = pageData.pageName;
+      if (descricaoInput) descricaoInput.value = pageData.description || '';
       if (pageUrlPreview) pageUrlPreview.textContent = `https://agendou.web.app/id-${pageData.pageUrl}`;
       if (modalidadeSelect) modalidadeSelect.value = pageData.modalidade;
       if (paisInput) paisInput.value = pageData.endereco.pais;
@@ -189,18 +190,22 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+
+
     // Atualiza o link da página em tempo real
     if (pageNameInput && pageUrlPreview) {
       pageNameInput.addEventListener('input', () => {
-        // Remove espaços extras, converte para minúsculas e substitui caracteres especiais
         const pageUrl = pageNameInput.value
-          .trim() // Remove espaços no início e no fim
-          .toLowerCase() // Converte para minúsculas
-          .replace(/\s+/g, '-') // Substitui espaços por hífens
-          .replace(/[^a-z0-9-]/g, ''); // Remove caracteres especiais, mantendo apenas letras, números e hífens
+          .trim()
+          .toLowerCase()
+          .replace(/\s+/g, '-')
+          .replace(/[^a-z0-9-]/g, '');
 
-        // Atualiza o texto do preview da URL
-        pageUrlPreview.textContent = `https://agendou.web.app/id-${pageUrl}`;
+        const pageUrlElement = document.getElementById('page-url');
+        if (pageUrlElement) {
+          pageUrlElement.textContent = `https://agendou.web.app/id-${pageUrl}`;
+          pageUrlElement.href = `https://agendou.web.app/id-${pageUrl}`;
+        }
       });
     }
 
@@ -299,9 +304,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Gera o pageUrl com base no pageName
         const pageUrl = pageNameInput.value.trim().toLowerCase().replace(/\s+/g, '-');
-
+        const descricao = document.getElementById('descricao') ? document.getElementById('descricao').value.trim() : '';
+        // Gera o object de dados da página
         const updatedPageData = {
           pageName: pageNameInput.value.trim(),
+          description: descricao,
           pageUrl: pageUrl,
           modalidade: modalidadeSelect.value,
           endereco: {
@@ -341,4 +348,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Carrega as páginas do usuário ao iniciar
     await loadUserPages();
   });
+
+  window.backPag = function () {
+    window.history.back();
+  };
+
+
+
 });

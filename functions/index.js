@@ -19,5 +19,5 @@ const logger = require("firebase-functions/logger");
 // });
 
 const functions = require("firebase-functions");
-const giphyQuery = require("./giphyQuery.js");
-exports.giphyQueryApi = giphyQuery;
+const servePageView = require("./servePageView");
+exports.servePageViewApi = servePageView;
