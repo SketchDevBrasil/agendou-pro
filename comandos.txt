@@ -11,9 +11,12 @@ npm install --save-dev webpack webpack-cli webpack-dev-server babel-loader @babe
 
 para testar localmente
 
-npm run clean
+npm cache clean --force
 npm run build
 npm start
+
+Acesse a URL local (ex: http://localhost:5000/id-exemplo).
+firebase emulators:start
 
 
 # Limpar a pasta node_modules
@@ -92,6 +95,8 @@ git push --force origin main
 Antes de redeployar, teste localmente para confirmar que os arquivos e rotas estão configurados corretamente:
 
 firebase deploy --only hosting,functions
+ou
+firebase deploy --only "hosting,functions"
 
 Isso fará o deploy apenas do Firebase Hosting
 
@@ -110,7 +115,10 @@ git add .
 git commit -m "nova atualizacão hosting and functions..."
 git push --force origin main
 firebase deploy --only hosting
-firebase deploy --only functions:authHandlerApi
+
+firebase deploy --only "functions:agendamento"
+
+firebase functions:delete servePageViewApi-servePage
 
 git add .
 git commit -m "nova atualizacão functions..."

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento - <%= pageData.pageName %></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      color: #555;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background: #f9f9f9;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+    form {
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #14c555;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #12a046;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><%= pageData.pageName %></h1>
+    <p><%= pageData.description %></p>
+    <p><strong>Modalidade:</strong> <%= pageData.modalidade %></p>
+    <p><strong>Endereço:</strong> <%= pageData.endereco.rua %>, <%= pageData.endereco.cidade %>, <%= pageData.endereco.estado %></p>
+
+    <h2>Horários de Atendimento</h2>
+    <ul>
+      <% Object.entries(pageData.horarios).forEach(([dia, horarios]) => { %>
+        <li>
+          <strong><%= dia %>:</strong>
+          <br>
+          Manhã: <%= horarios.manha %>
+          <br>
+          Almoço: <%= horarios.almoco %>
+          <br>
+          Tarde: <%= horarios.tarde %>
+        </li>
+      <% }) %>
+    </ul>
+
+    <h2>Agendar Horário</h2>
+    <form action="/agendar" method="POST">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="data">Data:</label>
+      <input type="date" id="data" name="data" required>
+
+      <label for="hora">Hora:</label>
+      <input type="time" id="hora" name="hora" required>
+
+      <button type="submit">Agendar</button>
+    </form>
+  </div>
+</body>
+</html>

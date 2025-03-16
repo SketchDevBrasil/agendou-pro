@@ -9,8 +9,8 @@
     ],
     "rewrites": [
       {
-        "source": "/id-:pageUrl",
-        "function": "servePage"
+        "source": "/id-**",
+        "function": "agendamentoPage"
       },
       {
         "source": "/",
