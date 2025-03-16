@@ -10,7 +10,7 @@
     "rewrites": [
       {
         "source": "/id-**",
-        "function": "agendamento"
+        "function": "agendamentoPage"
       },
       {
         "source": "/",
