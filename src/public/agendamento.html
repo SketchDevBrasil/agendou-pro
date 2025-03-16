@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento</title>
+</head>
+<body>
+  <h1>Detalhes do Agendamento</h1>
+  <div id="page-details"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Extrai os parâmetros da URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const pageData = {};
+      for (const [key, value] of urlParams) {
+        pageData[key] = value;
+      }
+
+      if (Object.keys(pageData).length === 0) {
+        document.getElementById('page-details').innerHTML = '<p>Erro: Nenhum dado encontrado.</p>';
+        return;
+      }
+
+      // Renderiza as informações na página
+      const detailsContainer = document.getElementById('page-details');
+      detailsContainer.innerHTML = `
+        <p>Nome da Página: ${pageData.pageName}</p>
+        <p>Descrição: ${pageData.description || 'Sem descrição'}</p>
+        <!-- Adicione mais campos conforme necessário -->
+      `;
+    });
+  </script>
+</body>
+</html>

@@ -85,7 +85,8 @@ git add .
 git commit -m "nova atualizacão"
 git push --force origin main
 firebase deploy --only "hosting,functions"
-firebase deploy --only hosting 
+
+
 
 git add .
 git commit -m "nova atualizacão ..."

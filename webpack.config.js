@@ -106,8 +106,8 @@ export default {
       chunks: [],
     }),
     new HtmlWebpackPlugin({
-      template: './src/public/estabelecimento.html',
-      filename: 'estabelecimento.html',
+      template: './src/public/agendamento.html',
+      filename: 'agendamento.html',
       chunks: [],
     }),
     new HtmlWebpackPlugin({

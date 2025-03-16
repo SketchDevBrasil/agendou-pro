@@ -1,41 +1,46 @@
-const functions = require("firebase-functions");
-const admin = require("firebase-admin");
-const express = require("express");
-const ejs = require("ejs");
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
 
-// Inicializa o Firebase Admin SDK
 if (!admin.apps.length) {
   admin.initializeApp();
 }
 
-// Configura o Express
-const app = express();
-app.set("views", "./views"); // Define a pasta de views
-app.set("view engine", "ejs"); // Define EJS como template engine
-
-// Rota para a página de agendamento
-app.get("/id-:pageUrl", async (req, res) => {
+exports.servePage = functions.https.onRequest(async (req, res) => {
   try {
-    const pageUrl = req.params.pageUrl; // Captura o pageUrl da URL
+    const url = req.url || '';
+    const regex = /\/id-([a-zA-Z0-9-]+)/;
+    const match = url.match(regex);
 
-    // Busca os dados da página no Firestore
-    const pagesRef = admin.firestore().collection("pages");
-    const querySnapshot = await pagesRef.where("pageUrl", "==", pageUrl).get();
+    if (match) {
+      const pageUrl = match[1];
 
-    if (querySnapshot.empty) {
-      res.status(404).send("Página não encontrada");
-      return;
+      if (!pageUrl || typeof pageUrl !== 'string') {
+        res.status(400).send('pageUrl inválido');
+        return;
+      }
+
+      const pagesRef = admin.firestore().collection('pages');
+      const querySnapshot = await pagesRef.where('pageUrl', '==', pageUrl).get();
+
+      if (querySnapshot.empty) {
+        res.status(404).send('Página não encontrada');
+        return;
+      }
+
+      const pageData = querySnapshot.docs[0].data();
+
+      // Redirecionamento direto com dados na URL
+      const baseUrl = 'https://agendou.web.app/agendamento';
+      const params = new URLSearchParams(pageData).toString(); // Transforma os dados em parâmetros da URL
+      const redirectUrl = `${baseUrl}?${params}`;
+
+      res.redirect(redirectUrl);
+
+    } else {
+      res.status(404).send('Página não encontrada');
     }
-
-    const pageData = querySnapshot.docs[0].data(); // Extrai os dados da página
-
-    // Renderiza a página de agendamento com os dados
-    res.render("agendamento", { pageData });
   } catch (error) {
-    console.error("Erro na função:", error.message);
-    res.status(500).send("Erro interno na função");
+    console.error('Erro na função:', error.message);
+    res.status(500).send('Erro interno na função');
   }
 });
-
-// Exporta o app do Express
-module.exports = { app };
