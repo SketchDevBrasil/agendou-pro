@@ -31,6 +31,7 @@ const createUserProfile = async (user) => {
     await setDoc(userDocRef, {
       displayName: user.displayName || "Não informado",
       email: user.email,
+      ownerUid: user.uid,
       arroba: defaultArroba,
       photoURL: "../assets/images/user.png", // Imagem padrão
       createdAt: new Date(),
