@@ -9,8 +9,8 @@
     ],
     "rewrites": [
       {
-        "source": "/id-**",
-        "function": "agendamentoPage"
+        "source": "/id-*",
+        "destination": "/agendamento.html"
       },
       {
         "source": "/",
@@ -27,10 +27,6 @@
       {
         "source": "/admin",
         "destination": "/admin.html"
-      },
-      {
-        "source": "/agendamento",
-        "destination": "/agendamento.html"
       },
       {
         "source": "/politicas",

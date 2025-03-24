@@ -14,10 +14,15 @@ para testar localmente
 npm cache clean --force
 npm run build
 npm start
+firebase deploy --only "functions:servePage"
 
-Acesse a URL local (ex: http://localhost:5000/id-exemplo).
+Abra o emulador do firebase com
+
+npm cache clean --force
+npm run build
 firebase emulators:start
 
+Acesse a URL local (ex: http://localhost:5000/id-777777).
 
 # Limpar a pasta node_modules
 Remove-Item -Recurse -Force node_modules
@@ -75,7 +80,7 @@ app.listen(PORT, '0.0.0.0', () => {
 git add .
 git commit -m "nova atualizacão"
 git push --force
-firebase deploy --only functions:queryProjectsFuntion
+firebase deploy --only "functions:servePage"
 
 Se você quiser enviar as alterações para um branch específico, substitua origin main pelos nomes do seu remoto e branch:
 
@@ -85,8 +90,6 @@ git add .
 git commit -m "nova atualizacão"
 git push --force origin main
 firebase deploy --only "hosting,functions"
-
-
 
 git add .
 git commit -m "nova atualizacão ..."
@@ -107,7 +110,8 @@ git push --force origin main
 firebase deploy --only hosting
 firebase deploy --only functions
 
-
+ou
+firebase deploy --only "functions"
 
 para testar localmente
 node server.js

@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
 
-
     // Carrega os dados da página selecionada
     const loadPageData = async (pageData) => {
       if (pageSelectionModal) pageSelectionModal.style.display = 'none';

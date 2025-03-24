@@ -18,6 +18,7 @@ export default {
     adminImport: './src/scriptsImport/adminImport.js',
     createpageImport: './src/scriptsImport/createpageImport.js',
     updatepageImport: './src/scriptsImport/updatepageImport.js',
+    agendamentoImport: './src/scriptsImport/agendamentoImport.js',
   },
   output: {
     filename: 'scripts/[name].bundle.js',
@@ -101,13 +102,13 @@ export default {
       chunks: ['updatepageImport'],
     }),
     new HtmlWebpackPlugin({
-      template: './src/public/404.html',
-      filename: '404.html',
-      chunks: [],
-    }),
-    new HtmlWebpackPlugin({
       template: './src/public/agendamento.html',
       filename: 'agendamento.html',
+      chunks: ['agendamentoImport'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/public/404.html',
+      filename: '404.html',
       chunks: [],
     }),
     new HtmlWebpackPlugin({

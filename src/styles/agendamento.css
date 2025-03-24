@@ -1,0 +1,302 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  background: white;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+}
+
+
+.HeaderTop {
+  background: white;
+  position: sticky;
+  top: 0;
+  margin-bottom: 17px;
+  border-radius: 7px;
+  z-index: 1000;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.close {
+  color: #14c555;
+  width: 25px;
+  height: 25px;
+  margin-left: 50px;
+}
+
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+  color: #555;
+}
+
+input,
+select,
+button {
+  padding: 7px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  font-size: 16px;
+  margin: 3px 0;
+}
+
+
+textarea {
+  width: 100%;
+  /* Ocupa 100% da largura do contêiner pai */
+  box-sizing: border-box;
+  /* Inclui padding e borda na largura total */
+  max-width: 100%;
+  /* Garante que não ultrapasse a largura do contêiner pai */
+  padding: 8px;
+  /* Espaçamento interno para melhorar a aparência */
+  margin: 0;
+  /* Remove margens padrão */
+  border: 1px solid #ccc;
+  /* Borda simples */
+  border-radius: 4px;
+  /* Bordas arredondadas */
+  font-size: 17px;
+  /* Tamanho da fonte */
+}
+
+textarea {
+  resize: vertical;
+  /* Permite redimensionar verticalmente, mas não horizontalmente */
+}
+
+
+
+button {
+  background-color: #14c555;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #000000;
+}
+
+#page-url-preview {
+  font-size: 14px;
+  color: #0772ff;
+}
+
+#logo-preview img {
+  margin-top: 7px;
+  border-radius: 7px;
+}
+
+
+#logo-cropper-container {
+  width: 100%;
+  height: 300px;
+  margin: 7px auto;
+  overflow: hidden;
+}
+
+#logo-to-crop {
+  max-width: 100%;
+}
+
+
+
+#horarios-container {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.dia {
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  padding: 7px;
+  background-color: #f9f9f9;
+}
+
+.dia label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+}
+
+.horarios-expandidos {
+  margin-top: 7px;
+  padding-left: 20px;
+  border-left: 2px solid #14c555;
+}
+
+.horario {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 7px;
+}
+
+.horario label {
+  font-weight: bold;
+  min-width: 60px;
+}
+
+.horario input[type="time"] {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+}
+
+#progress-bar-container {
+  width: 100%;
+  background-color: #f3f3f3;
+  border-radius: 7px;
+  margin-top: 7px;
+}
+
+#progress-bar {
+  width: 0;
+  height: 7px;
+  background-color: #14c555;
+  border-radius: 7px;
+  transition: width 0.3s ease;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.close-modal {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-modal:hover {
+  color: #ff0000;
+}
+
+
+/* Esconde o input original */
+.hidden-file-input {
+  display: none;
+}
+
+/* Estilo do botão personalizado */
+.custom-file-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 20px;
+  background-color: #14c555;
+  color: white;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: auto;
+}
+
+
+.custom-file-button:hover {
+  background-color: #000000;
+  /* Muda a cor ao passar o mouse */
+}
+
+
+/* Estilo do ícone */
+.custom-file-button i {
+  margin-right: 7px;
+  /* Espaço entre o ícone e o texto */
+}
+
+/* Estilo do nome do arquivo */
+.file-name {
+  margin-left: 7px;
+  color: #2e2e2e;
+  font-size: 14px;
+}
+
+
+
+/* Estilo para o item da lista de páginas */
+.page-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Estilo para o conteúdo do item (imagem + texto) */
+.page-item-content {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  /* Espaço entre a imagem e o texto */
+}
+
+/* Estilo para a logo da página */
+.page-logo {
+  width: 50px;
+  /* Ajuste o tamanho conforme necessário */
+  height: 50px;
+  border-radius: 50%;
+  /* Para imagens redondas */
+  object-fit: cover;
+  /* Garante que a imagem cubra o espaço */
+}
+
+/* Estilo para o botão de seleção */
+.page-item button {
+  background-color: #14c555;
+  color: white;
+  border: none;
+  padding: 5px 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.page-item button:hover {
+  background-color: #000000;
+}
