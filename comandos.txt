@@ -13,8 +13,10 @@ para testar localmente
 
 npm cache clean --force
 npm run build
-npm start
-firebase deploy --only "functions:servePage"
+git add .
+git commit -m "nova atualizacão hosting and functions..."
+git push --force origin main
+firebase deploy --only hosting
 
 Abra o emulador do firebase com
 
@@ -116,10 +118,7 @@ firebase deploy --only "functions"
 para testar localmente
 node server.js
 
-git add .
-git commit -m "nova atualizacão hosting and functions..."
-git push --force origin main
-firebase deploy --only hosting
+
 
 firebase deploy --only "functions:agendamento"
 
