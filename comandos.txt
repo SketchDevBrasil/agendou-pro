@@ -20,11 +20,13 @@ firebase deploy --only hosting
 
 Abra o emulador do firebase com
 
+
 npm cache clean --force
 npm run build
 firebase emulators:start
 
-Acesse a URL local (ex: http://localhost:5000/id-777777).
+
+Acesse a URL local ex: http://localhost:5000/id-sketch-dev-brasil
 
 # Limpar a pasta node_modules
 Remove-Item -Recurse -Force node_modules

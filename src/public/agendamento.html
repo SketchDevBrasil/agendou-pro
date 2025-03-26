@@ -4,28 +4,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Página de Agendamentos</title>
+  <title>Agendou</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
 </head>
 
 <body>
   <div class="container">
-    <div class="HeaderTop">
-      <h1>Página de Agendamentos</h1>
-      <img src="../assets/images/close-icon.png" alt="Ícone de Fechar" class="close" onclick="backPag()">
+    <div class="HeaderInfo">
+      <div class="profile-info">
+        <div class="profile-header">
+      <!-- Logo -->
+      <div id="logo-preview">
+        <img id="logo-image" src="#" alt="Logo da Página" style="max-width: 100px;">
+      </div>
+      <!-- Nome da Página -->
+      <p><span id="page-name"></span></p>
+      <p><span id="page-url" class="fas fa-share-alt "></span></p>
+    </div>
+      <!-- Descrição -->
+      <p><span id="descricao"></span></p>
+      <!-- Link da Página -->
+      
     </div>
 
-    <!-- Nome da Página -->
-    <p><strong>Nome da Página:</strong> <span id="page-name"></span></p>
 
-    <!-- Descrição -->
-    <p><strong>Descrição (Slogan):</strong> <span id="descricao"></span></p>
-
-    <!-- Link da Página -->
-    <p><strong>Link da Página:</strong> <span id="page-url"></span></p>
 
     <!-- Modalidade do Negócio -->
-    <p><strong>Modalidade do Negócio:</strong> <span id="modalidade"></span></p>
+    <p><strong>Modalidade:</strong> <span id="modalidade"></span></p>
 
     <!-- Endereço -->
     <p><strong>Endereço:</strong></p>
@@ -37,17 +43,14 @@
       <li><strong>CEP:</strong> <span id="cep"></span></li>
     </ul>
 
-    <!-- Logo -->
-    <div id="logo-preview">
-      <img id="logo-image" src="#" alt="Logo da Página" style="max-width: 100px;">
-    </div>
+    <!-- Limite de Agendamentos por Hora -->
+    <p><strong>Limite de Agendamentos por Hora:</strong> <span id="limite-agendamentos"></span></p>
 
     <!-- Horários de Atendimento -->
     <p><strong>Horários de Atendimento:</strong></p>
     <div id="horarios-container"></div>
 
-    <!-- Limite de Agendamentos por Hora -->
-    <p><strong>Limite de Agendamentos por Hora:</strong> <span id="limite-agendamentos"></span></p>
+    
   </div>
 </body>
 

@@ -43,11 +43,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+
+// Adiciona um evento de clique
+pageUrlElement.addEventListener('click', () => {
+  // Obtém a URL atual ou gera uma dinâmica (como no seu exemplo)
+  const currentUrl = window.location.href; // ou use uma URL personalizada
+  // const customUrl = `https://agendou.web.app/id-${pageData.pageUrl}`; // Se pageData estiver definido
+  
+  // Verifica se a API de compartilhamento é suportada (navegadores móveis)
+  if (navigator.share) {
+    navigator.share({
+      title: 'Compartilhar link',
+      url: currentUrl, // ou customUrl
+    })
+    .catch(err => console.error('Erro ao compartilhar:', err));
+  } 
+  // Fallback para copiar a URL (navegadores desktop)
+  else {
+    navigator.clipboard.writeText(currentUrl) // ou customUrl
+      .then(() => {
+        alert('Link copiado para a área de transferência!');
+      })
+      .catch(err => {
+        console.error('Erro ao copiar:', err);
+        // Fallback mais antigo (para navegadores sem Clipboard API)
+        const textarea = document.createElement('textarea');
+        textarea.value = currentUrl; // ou customUrl
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        alert('Link copiado!');
+      });
+  }
+});
+
+
   // Função para carregar os dados na página
   const loadPageData = (pageData) => {
     if (pageNameElement) pageNameElement.textContent = pageData.pageName || '';
     if (descricaoElement) descricaoElement.textContent = pageData.description || '';
-    if (pageUrlElement) pageUrlElement.textContent = `https://agendou.web.app/id-${pageData.pageUrl}`;
     if (modalidadeElement) modalidadeElement.textContent = pageData.modalidade || '';
     if (paisElement) paisElement.textContent = pageData.endereco?.pais || '';
     if (estadoElement) estadoElement.textContent = pageData.endereco?.estado || '';
@@ -69,9 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const diaDiv = document.createElement('div');
         diaDiv.innerHTML = `
           <h3>${dia.charAt(0).toUpperCase() + dia.slice(1)}</h3>
-          <p>Manhã: ${horarios.manhaInicio || 'Fechado'} - ${horarios.manhaFim || 'Fechado'}</p>
-          <p>Almoço: ${horarios.almocoInicio || 'Fechado'} - ${horarios.almocoFim || 'Fechado'}</p>
-          <p>Tarde: ${horarios.tardeInicio || 'Fechado'} - ${horarios.tardeFim || 'Fechado'}</p>
+          <p>Manhã: ${horarios.manha || 'Fechado'}</p>
+          <p>Almoço: ${horarios.almoco || 'Fechado'}</p>
+          <p>Tarde: ${horarios.tarde || 'Fechado'}</p>
         `;
         horariosContainer.appendChild(diaDiv);
       });
