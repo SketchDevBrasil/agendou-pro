@@ -85,6 +85,7 @@ textarea {
   /* Tamanho da fonte */
 }
 
+
 textarea {
   resize: vertical;
   /* Permite redimensionar verticalmente, mas não horizontalmente */
@@ -110,7 +111,7 @@ button:hover {
 
 #logo-preview img {
   margin-top: 7px;
-  border-radius: 7px;
+  border-radius: 50px;
 }
 
 
