@@ -20,6 +20,18 @@
     </div>
 
     <form id="update-page-form">
+
+      <div class="file-input-container">
+        <input type="file" id="logo" accept="image/*" class="hidden-file-input">
+        <label for="logo" class="custom-file-button">
+
+          <span>Selecionar imagem</span>
+        </label>
+        <span id="file-name" class="file-name">
+
+        </span>
+      </div>
+
       <!-- Nome da Página -->
       <label for="page-name">Nome da Página:</label>
       <input type="text" id="page-name" placeholder="Ex: Meu Salão" maxlength="30" required>
@@ -73,17 +85,7 @@
         <img id="logo-image" src="#" alt="Pré-visualização da Logo" style="max-width: 100px;">
       </div>
 
-      <div class="file-input-container">
-        <input type="file" id="logo" accept="image/*" class="hidden-file-input">
-        <label for="logo" class="custom-file-button">
-
-          <span>Selecionar imagem</span>
-        </label>
-        <span id="file-name" class="file-name">
-
-          Nenhum arquivo selecionado
-        </span>
-      </div>
+    
 
       <div id="progress-bar-container" style="display: none;">
         <div id="progress-bar"></div>
