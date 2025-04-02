@@ -39,6 +39,68 @@ body {
 }
 
 
+
+.order-list-left {
+  /* Layout */
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  
+  /* Estilo visual */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  
+  /* Tipografia */
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #333333;
+  
+  /* Organização interna */
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  
+  /* Borda sutil */
+  border: 1px solid #eaeaea;
+  transition: all 0.3s ease;
+}
+
+/* Efeito hover para interatividade */
+.order-list-left:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Estilo para itens da lista (se houver) */
+.order-list-left > div {
+  padding: 0.8rem 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilo para títulos (se aplicável) */
+.order-list-left h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .order-list-left {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+}
+
+
+
+
 h1 {
   text-align: center;
   color: #333;
