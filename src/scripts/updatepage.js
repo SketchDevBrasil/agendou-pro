@@ -271,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Define o caminho no Storage com o UID do usuário e o ID da página
             const storageRef = ref(storage, `logos/${user.uid}/${pageId}/logo`);
 
+
             // Faz o upload da nova logo
             const uploadTask = uploadBytesResumable(storageRef, blob);
 
@@ -294,10 +295,13 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+
+
     // Atualiza o formulário ao enviar
     if (updatePageForm) {
       updatePageForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+
 
         // Gera o pageUrl com base no pageName
         const pageUrl = pageNameInput.value.trim().toLowerCase().replace(/\s+/g, '-');
@@ -320,6 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
           tipoPagina: tipoProCheckbox.checked ? 'pro' : 'free',
         };
 
+        
         // Coleta os horários dos dias da semana
         document.querySelectorAll('.dia-checkbox').forEach(checkbox => {
           if (checkbox.checked) {
@@ -327,7 +332,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const diaContainer = checkbox.closest('.dia');
             updatedPageData.horarios[dia] = {
               manha: `${diaContainer.querySelector('.horario-manha-inicio').value} às ${diaContainer.querySelector('.horario-manha-fim').value}`,
-              almoco: `${diaContainer.querySelector('.horario-almoco-inicio').value} às ${diaContainer.querySelector('.horario-almoco-fim').value}`,
               tarde: `${diaContainer.querySelector('.horario-tarde-inicio').value} às ${diaContainer.querySelector('.horario-tarde-fim').value}`,
             };
           }
