@@ -39,40 +39,6 @@ body {
 }
 
 
-
-.order-list-left {
-  /* Layout */
-  width: 100%;
-  margin: 0 auto;
-  padding: 1.5rem;
-  
-  /* Tipografia */
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #333333;
-  
-  /* Organização interna */
-  display: flex;
-  flex-direction: column;
-
-}
-
-/* Efeito hover para interatividade */
-.order-list-left:hover {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  transform: translateY(-2px);
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .order-list-left {
-    padding: 1rem;
-    border-radius: 8px;
-  }
-}
-
-
-
-
 h1 {
   text-align: center;
   color: #333;
