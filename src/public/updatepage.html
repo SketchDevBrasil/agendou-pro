@@ -15,11 +15,20 @@
 
   <div class="container">
     <div class="HeaderTop">
-      <h1>Editar Página de Atendimento</h1>
+      <label for="logo">Logo:</label>
+
+      <div id="logo-preview" style="display: none;">
+        <img id="logo-image" src="#" alt="Pré-visualização da Logo" style="max-width: 100px;">
+      </div>
+      
+      <h4>Editar Página de Atendimento</h4>
       <img src="../assets/images/close-icon.png" alt="Ícone de Email" class="close" onclick="backPag()">
     </div>
 
     <form id="update-page-form">
+
+      <!-- Logo -->
+      
 
       <div class="file-input-container">
         <input type="file" id="logo" accept="image/*" class="hidden-file-input">
@@ -31,6 +40,12 @@
 
         </span>
       </div>
+
+      <div id="progress-bar-container" style="display: none;">
+        <div id="progress-bar"></div>
+      </div>
+
+
 
       <!-- Nome da Página -->
       <label for="page-name">Nome da Página:</label>
@@ -78,18 +93,6 @@
         <input type="text" id="cep" placeholder="CEP" required>
       </div>
 
-      <!-- Logo -->
-      <label for="logo">Logo:</label>
-
-      <div id="logo-preview" style="display: none;">
-        <img id="logo-image" src="#" alt="Pré-visualização da Logo" style="max-width: 100px;">
-      </div>
-
-    
-
-      <div id="progress-bar-container" style="display: none;">
-        <div id="progress-bar"></div>
-      </div>
 
       <!-- Tipo de Página (Free ou Pro) -->
       <label>Tipo de Página:</label>
