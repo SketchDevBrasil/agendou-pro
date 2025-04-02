@@ -91,6 +91,19 @@ document.addEventListener('DOMContentLoaded', () => {
       // Preenche os campos do formulário
       if (pageNameInput) pageNameInput.value = pageData.pageName;
       if (descricaoInput) descricaoInput.value = pageData.description || '';
+      
+      if (pageUrlPreview) {
+        pageUrlPreview.textContent = `https://agendou.web.app/id-${pageData.pageUrl}`;
+        // Garante que o link seja clicável e tenha estilo de link
+        pageUrlPreview.style.color = '#0066cc';
+        pageUrlPreview.style.textDecoration = 'underline';
+        pageUrlPreview.style.cursor = 'pointer';
+        pageUrlPreview.target = '_blank'; // Abre em nova aba
+        pageUrlPreview.rel = 'noopener noreferrer'; // Boas práticas de segurança 
+      }else {
+        pageUrlPreview.textContent = `https://agendou.web.app/id-${pageData.pageUrl}`
+      }
+        
       if (modalidadeSelect) modalidadeSelect.value = pageData.modalidade;
       if (paisInput) paisInput.value = pageData.endereco.pais;
       if (estadoInput) estadoInput.value = pageData.endereco.estado;
@@ -98,16 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (ruaInput) ruaInput.value = pageData.endereco.rua;
       if (cepInput) cepInput.value = pageData.endereco.cep;
       if (limiteAgendamentosInput) limiteAgendamentosInput.value = pageData.limiteAgendamentosPorHora;
-      if (pageUrlPreview) pageUrlPreview.textContent = `https://agendou.web.app/id-${pageData.pageUrl}`;
-
-      document.getElementById('page-url').addEventListener('click', function (event) {
-        // Previne o comportamento padrão do link (navegar para a URL)
-        event.preventDefault();
-        let urlPege = `https://agendou.web.app/id-${pageData.pageUrl}`;
-        window.location.href = urlPege.href;
-      });
-
-
 
       // Define o tipo de página (Free ou Pro)
       if (tipoFreeCheckbox && tipoProCheckbox) {
