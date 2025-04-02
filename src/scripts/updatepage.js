@@ -125,8 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             diaContainer.querySelector('.horario-manha-inicio').value = horarios.manha.split(' às ')[0];
             diaContainer.querySelector('.horario-manha-fim').value = horarios.manha.split(' às ')[1];
-            diaContainer.querySelector('.horario-almoco-inicio').value = horarios.almoco.split(' às ')[0];
-            diaContainer.querySelector('.horario-almoco-fim').value = horarios.almoco.split(' às ')[1];
             diaContainer.querySelector('.horario-tarde-inicio').value = horarios.tarde.split(' às ')[0];
             diaContainer.querySelector('.horario-tarde-fim').value = horarios.tarde.split(' às ')[1];
           }

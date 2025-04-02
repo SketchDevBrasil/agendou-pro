@@ -105,7 +105,6 @@ pageUrlElement.addEventListener('click', () => {
         diaDiv.innerHTML = `
           <h3>${dia.charAt(0).toUpperCase() + dia.slice(1)}</h3>
           <p>Manhã: ${horarios.manha || 'Fechado'}</p>
-          <p>Almoço: ${horarios.almoco || 'Fechado'}</p>
           <p>Tarde: ${horarios.tarde || 'Fechado'}</p>
         `;
         horariosContainer.appendChild(diaDiv);

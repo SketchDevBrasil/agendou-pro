@@ -143,8 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-
-  // Função para fazer upload da logo
   // Função para fazer upload da logo
   const uploadLogo = async (blob, pageId) => { // Adicione o pageId como parâmetro
     const user = auth.currentUser;
@@ -230,14 +228,11 @@ document.addEventListener('DOMContentLoaded', () => {
           const diaNome = checkbox.value;
           const manhaInicio = dia.querySelector('.horario-manha-inicio')?.value || '';
           const manhaFim = dia.querySelector('.horario-manha-fim')?.value || '';
-          const almocoInicio = dia.querySelector('.horario-almoco-inicio')?.value || '';
-          const almocoFim = dia.querySelector('.horario-almoco-fim')?.value || '';
           const tardeInicio = dia.querySelector('.horario-tarde-inicio')?.value || '';
           const tardeFim = dia.querySelector('.horario-tarde-fim')?.value || '';
 
           horarios[diaNome] = {
             manha: `${manhaInicio} às ${manhaFim}`,
-            almoco: `${almocoInicio} às ${almocoFim}`,
             tarde: `${tardeInicio} às ${tardeFim}`,
           };
         }
