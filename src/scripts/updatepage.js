@@ -103,16 +103,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const pageUrl1 = pageNameInput.value
           .trim()
           .toLowerCase()
+          // Remove acentos
+          .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          // Substitui espaços por hífens
           .replace(/\s+/g, '-')
-          .replace(/[^a-z0-9-]/g, '');
+          // Mantém apenas letras, números, hífens, underscores e pontos
+          .replace(/[^a-z0-9\-_\.]/g, '');
 
         const fullUrl1 = `https://agendou.web.app/id-${pageUrl1}`;
 
         // Atualiza o texto e o href do link
         pageUrlPreview.textContent = fullUrl1;
         pageUrlPreview.href = fullUrl1;
-
-
       } else {
         pageUrlPreview.textContent = `https://agendou.web.app/id-${pageData.pageUrl}`;
       }
@@ -125,8 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
           const pageUrl = pageNameInput.value
             .trim()
             .toLowerCase()
+            // Remove acentos
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            // Substitui espaços por hífens
             .replace(/\s+/g, '-')
-            .replace(/[^a-z0-9-]/g, '');
+            // Mantém apenas letras, números, hífens, underscores e pontos
+            .replace(/[^a-z0-9\-_\.]/g, '');
 
           const fullUrl = `https://agendou.web.app/id-${pageUrl}`;
 
@@ -200,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
 
+      
 
       // Carrega a logo da página
       if (logoImage && pageData.logoUrl) {
@@ -234,8 +241,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Selecione uma página para continuar.');
       });
     }
-
-
 
 
 
