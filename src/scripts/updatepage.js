@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // Atualiza o link da página em tempo real
+    // Atualiza o link da página em tempo real e torna clicável
     if (pageNameInput && pageUrlPreview) {
       pageNameInput.addEventListener('input', () => {
         const pageUrl = pageNameInput.value
@@ -198,13 +198,24 @@ document.addEventListener('DOMContentLoaded', () => {
           .replace(/\s+/g, '-')
           .replace(/[^a-z0-9-]/g, '');
 
-        const pageUrlElement = document.getElementById('page-url');
-        if (pageUrlElement) {
-          pageUrlElement.textContent = `https://agendou.web.app/id-${pageUrl}`;
-          pageUrlElement.href = `https://agendou.web.app/id-${pageUrl}`;
-        }
+        const fullUrl = `https://agendou.web.app/id-${pageUrl}`;
+
+        // Atualiza o texto e o href do link
+        pageUrlPreview.textContent = fullUrl;
+        pageUrlPreview.href = fullUrl;
+
+        // Garante que o link seja clicável e tenha estilo de link
+        pageUrlPreview.style.color = '#0066cc';
+        pageUrlPreview.style.textDecoration = 'underline';
+        pageUrlPreview.style.cursor = 'pointer';
+        pageUrlPreview.target = '_blank'; // Abre em nova aba
+        pageUrlPreview.rel = 'noopener noreferrer'; // Boas práticas de segurança
       });
+
+      // Dispara o evento input inicial para mostrar o link mesmo sem digitação
+      pageNameInput.dispatchEvent(new Event('input'));
     }
+
 
     // Garante que apenas um checkbox (Free ou Pro) seja selecionado
     if (tipoFreeCheckbox && tipoProCheckbox) {
@@ -324,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
           tipoPagina: tipoProCheckbox.checked ? 'pro' : 'free',
         };
 
-        
+
         // Coleta os horários dos dias da semana
         document.querySelectorAll('.dia-checkbox').forEach(checkbox => {
           if (checkbox.checked) {
