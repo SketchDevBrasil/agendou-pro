@@ -60,6 +60,7 @@ form {
 label {
   font-weight: bold;
   color: #555;
+  font-size: 13px;
 }
 
 
@@ -287,13 +288,11 @@ button:hover {
 
 /* Estilo para a logo da página */
 .page-logo {
-  width: 50px;
-  /* Ajuste o tamanho conforme necessário */
-  height: 50px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  /* Para imagens redondas */
   object-fit: cover;
-  /* Garante que a imagem cubra o espaço */
+  border: 2px solid #14c555;
 }
 
 /* Estilo para o botão de seleção */
