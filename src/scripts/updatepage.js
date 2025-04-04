@@ -341,8 +341,20 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
 
+
+
         // Gera o pageUrl com base no pageName
-        const pageUrl = pageNameInput.value.trim().toLowerCase().replace(/\s+/g, '-');
+
+        const pageUrl = pageNameInput.value
+            .trim()
+            .toLowerCase()
+            // Remove acentos
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            // Substitui espaços por hífens
+            .replace(/\s+/g, '-')
+            // Mantém apenas letras, números, hífens, underscores e pontos
+            .replace(/[^a-z0-9\-_\.]/g, '');
+
         const descricao = document.getElementById('descricao') ? document.getElementById('descricao').value.trim() : '';
         // Gera o object de dados da página
         const updatedPageData = {
