@@ -20,9 +20,6 @@ firebase deploy --only hosting
 firebase emulators:start
 
 
-
-
-
 npm cache clean --force
 npm run build
 firebase emulators:start

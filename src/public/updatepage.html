@@ -19,15 +19,27 @@
 
     <div class="HeaderTop">
       <!-- Logo -->
-      <label for="logo">Logo:<i class="fas fa-pencil-alt edit-icon"></i></label>
+      
       <div class="order-list-left">
-        
-        <div id="logo-preview" style="display: none;">
-          <img id="logo-image" src="#" alt="Pré-visualização da Logo" style="max-width: 100px;">
+        <label for="logo">Logo:</label>
+        <div id="logo-preview" style="display: none; position: relative; display: inline-block;">
+            <img id="logo-image" src="#" alt="Pré-visualização da Logo" style="max-width: 100px; cursor: pointer;">
+            <i class="fas fa-pencil-alt edit-icon" style="
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+                background: white;
+                padding: 3px;
+                border-radius: 50%;
+                font-size: 10px;
+                cursor: pointer;
+            "></i>
         </div>
-      </div>
+        <input type="file" id="logo" accept="image/*" style="display: none;">
+    </div>
 
 
+    
       <!-- Nome da Página -->
       <div class="order-list-left">
         <label for="page-name">Nome da Página:</label>
