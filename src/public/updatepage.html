@@ -12,21 +12,34 @@
 
 <body>
 
+
+
   <div class="container">
+
 
     <div class="HeaderTop">
       <!-- Logo -->
-
+      
       <div class="order-list-left">
         <label for="logo">Logo:</label>
-        <div id="logo-preview" style="display: none;">
-          <img id="logo-image" src="#" alt="Pré-visualização da Logo">
-          <i class="fas fa-pencil-alt edit-icon"></i>
+        <div id="logo-preview" style="display: none; position: relative; display: inline-block;">
+            <img id="logo-image" src="#" alt="Pré-visualização da Logo" style="max-width: 100px; cursor: pointer;">
+            <i class="fas fa-pencil-alt edit-icon" style="
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+                background: white;
+                padding: 3px;
+                border-radius: 50%;
+                font-size: 10px;
+                cursor: pointer;
+            "></i>
         </div>
         <input type="file" id="logo" accept="image/*" style="display: none;">
-      </div>
+    </div>
 
 
+    
       <!-- Nome da Página -->
       <div class="order-list-left">
         <label for="page-name">Nome da Página:</label>
@@ -38,208 +51,208 @@
     </div>
 
 
-    <form id="update-page-form">
+  <form id="update-page-form">
 
 
-      <div id="progress-bar-container" style="display: none;">
-        <div id="progress-bar"></div>
-      </div>
+    <div id="progress-bar-container" style="display: none;">
+      <div id="progress-bar"></div>
+    </div>
 
 
-      <p id="page-url-preview">Link de visualisação da página:
-        <a id="page-url">
-          https://agendou.web.app/id-
-        </a>
-      </p>
+    <p id="page-url-preview">Link de visualisação da página: 
+      <a id="page-url">
+        https://agendou.web.app/id-
+      </a>
+    </p>
 
 
-      <!-- Descrição (Slogan) -->
-      <label for="descricao">Descrição (Slogan):</label>
-      <textarea id="descricao" placeholder="Ex: O melhor salão da cidade!" maxlength="300" rows="4"></textarea>
+    <!-- Descrição (Slogan) -->
+    <label for="descricao">Descrição (Slogan):</label>
+    <textarea id="descricao" placeholder="Ex: O melhor salão da cidade!" maxlength="300" rows="4"></textarea>
 
 
-      <!-- Modalidade do Negócio -->
-      <label for="modalidade">Modalidade do Negócio:</label>
-      <select id="modalidade" required>
-        <option value="salão-de-beleza">Salão de Beleza</option>
-        <option value="barbearia">Barbearia</option>
-        <option value="clinica-estetica">Clínica Estética</option>
-        <option value="dentista">Dentista</option>
-        <option value="psicologo">Psicólogo</option>
-        <option value="clínica-médica">Clínica Médica</option>
-        <option value="fisioterapeuta">Fisioterapeuta</option>
-        <option value="nutricionista">Nutricionista</option>
-        <option value="massagista">Massagista</option>
-        <option value="advogado">Advogado</option>
-        <option value="academia">Academia</option>
-        <option value="pet-shop">Pet Shop</option>
-        <option value="salão-de-beleza ">Salão de beleza</option>
-        <option value="spa">Spa</option>
-        <option value="otica">Ótica</option>
-        <option value="outro">Outro</option>
-      </select>
+    <!-- Modalidade do Negócio -->
+    <label for="modalidade">Modalidade do Negócio:</label>
+    <select id="modalidade" required>
+      <option value="salão-de-beleza">Salão de Beleza</option>
+      <option value="barbearia">Barbearia</option>
+      <option value="clinica-estetica">Clínica Estética</option>
+      <option value="dentista">Dentista</option>
+      <option value="psicologo">Psicólogo</option>
+      <option value="clínica-médica">Clínica Médica</option>
+      <option value="fisioterapeuta">Fisioterapeuta</option>
+      <option value="nutricionista">Nutricionista</option>
+      <option value="massagista">Massagista</option>
+      <option value="advogado">Advogado</option>
+      <option value="academia">Academia</option>
+      <option value="pet-shop">Pet Shop</option>
+      <option value="salão-de-beleza ">Salão de beleza</option>
+      <option value="spa">Spa</option>
+      <option value="otica">Ótica</option>
+      <option value="outro">Outro</option>
+    </select>
 
-      <!-- Endereço -->
-      <label>Endereço:</label>
-      <div id="endereco">
-        <input type="text" id="pais" placeholder="País" required>
-        <input type="text" id="estado" placeholder="Estado" required>
-        <input type="text" id="cidade" placeholder="Cidade" required>
-        <input type="text" id="rua" placeholder="Rua" required>
-        <input type="text" id="cep" placeholder="CEP" required>
-      </div>
+    <!-- Endereço -->
+    <label>Endereço:</label>
+    <div id="endereco">
+      <input type="text" id="pais" placeholder="País" required>
+      <input type="text" id="estado" placeholder="Estado" required>
+      <input type="text" id="cidade" placeholder="Cidade" required>
+      <input type="text" id="rua" placeholder="Rua" required>
+      <input type="text" id="cep" placeholder="CEP" required>
+    </div>
 
 
-      <!-- Tipo de Página (Free ou Pro) -->
-      <label>Tipo de Página:</label>
-      <div>
-        <label>
-          <input type="checkbox" id="tipo-free" name="tipo-pagina" value="free"> Free (com anúncios, não personalizável)
-        </label>
-        <label>
-          <input type="checkbox" id="tipo-pro" name="tipo-pagina" value="pro"> Pro (sem anúncios, personalizável)
-        </label>
-      </div>
+    <!-- Tipo de Página (Free ou Pro) -->
+    <label>Tipo de Página:</label>
+    <div>
+      <label>
+        <input type="checkbox" id="tipo-free" name="tipo-pagina" value="free"> Free (com anúncios, não personalizável)
+      </label>
+      <label>
+        <input type="checkbox" id="tipo-pro" name="tipo-pagina" value="pro"> Pro (sem anúncios, personalizável)
+      </label>
+    </div>
 
-      <!-- Horários de Atendimento -->
-      <label>Horários de Atendimento:</label>
+    <!-- Horários de Atendimento -->
+    <label>Horários de Atendimento:</label>
 
-      <div id="horarios-container">
-        <!-- Segunda-feira -->
-        <div class="dia">
-          <label><input type="checkbox" class="dia-checkbox" value="segunda"> Segunda-feira</label>
-          <div class="horarios-expandidos" style="display: none;">
-            <div class="horario">
-              <label>Manhã:</label>
-              <input type="time" class="horario-manha-inicio" disabled> às
-              <input type="time" class="horario-manha-fim" disabled>
-            </div>
-
-            <div class="horario">
-              <label>Tarde:</label>
-              <input type="time" class="horario-tarde-inicio" disabled> às
-              <input type="time" class="horario-tarde-fim" disabled>
-            </div>
+    <div id="horarios-container">
+      <!-- Segunda-feira -->
+      <div class="dia">
+        <label><input type="checkbox" class="dia-checkbox" value="segunda"> Segunda-feira</label>
+        <div class="horarios-expandidos" style="display: none;">
+          <div class="horario">
+            <label>Manhã:</label>
+            <input type="time" class="horario-manha-inicio" disabled> às
+            <input type="time" class="horario-manha-fim" disabled>
           </div>
-        </div>
 
-        <!-- Terça-feira -->
-        <div class="dia">
-          <label><input type="checkbox" class="dia-checkbox" value="terca"> Terça-feira</label>
-          <div class="horarios-expandidos" style="display: none;">
-            <div class="horario">
-              <label>Manhã:</label>
-              <input type="time" class="horario-manha-inicio" disabled> às
-              <input type="time" class="horario-manha-fim" disabled>
-            </div>
-
-            <div class="horario">
-              <label>Tarde:</label>
-              <input type="time" class="horario-tarde-inicio" disabled> às
-              <input type="time" class="horario-tarde-fim" disabled>
-            </div>
-          </div>
-        </div>
-
-        <!-- Quarta-feira -->
-        <div class="dia">
-          <label><input type="checkbox" class="dia-checkbox" value="quarta"> Quarta-feira</label>
-          <div class="horarios-expandidos" style="display: none;">
-            <div class="horario">
-              <label>Manhã:</label>
-              <input type="time" class="horario-manha-inicio" disabled> às
-              <input type="time" class="horario-manha-fim" disabled>
-            </div>
-
-            <div class="horario">
-              <label>Tarde:</label>
-              <input type="time" class="horario-tarde-inicio" disabled> às
-              <input type="time" class="horario-tarde-fim" disabled>
-            </div>
-          </div>
-        </div>
-
-        <!-- Quinta-feira -->
-        <div class="dia">
-          <label><input type="checkbox" class="dia-checkbox" value="quinta"> Quinta-feira</label>
-          <div class="horarios-expandidos" style="display: none;">
-            <div class="horario">
-              <label>Manhã:</label>
-              <input type="time" class="horario-manha-inicio" disabled> às
-              <input type="time" class="horario-manha-fim" disabled>
-            </div>
-
-            <div class="horario">
-              <label>Tarde:</label>
-              <input type="time" class="horario-tarde-inicio" disabled> às
-              <input type="time" class="horario-tarde-fim" disabled>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sexta-feira -->
-        <div class="dia">
-          <label><input type="checkbox" class="dia-checkbox" value="sexta"> Sexta-feira</label>
-          <div class="horarios-expandidos" style="display: none;">
-            <div class="horario">
-              <label>Manhã:</label>
-              <input type="time" class="horario-manha-inicio" disabled> às
-              <input type="time" class="horario-manha-fim" disabled>
-            </div>
-
-            <div class="horario">
-              <label>Tarde:</label>
-              <input type="time" class="horario-tarde-inicio" disabled> às
-              <input type="time" class="horario-tarde-fim" disabled>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sábado -->
-        <div class="dia">
-          <label><input type="checkbox" class="dia-checkbox" value="sabado"> Sábado</label>
-          <div class="horarios-expandidos" style="display: none;">
-            <div class="horario">
-              <label>Manhã:</label>
-              <input type="time" class="horario-manha-inicio" disabled> às
-              <input type="time" class="horario-manha-fim" disabled>
-            </div>
-
-            <div class="horario">
-              <label>Tarde:</label>
-              <input type="time" class="horario-tarde-inicio" disabled> às
-              <input type="time" class="horario-tarde-fim" disabled>
-            </div>
-          </div>
-        </div>
-
-        <!-- Domingo -->
-        <div class="dia">
-          <label><input type="checkbox" class="dia-checkbox" value="domingo"> Domingo</label>
-          <div class="horarios-expandidos" style="display: none;">
-            <div class="horario">
-              <label>Manhã:</label>
-              <input type="time" class="horario-manha-inicio" disabled> às
-              <input type="time" class="horario-manha-fim" disabled>
-            </div>
-
-            <div class="horario">
-              <label>Tarde:</label>
-              <input type="time" class="horario-tarde-inicio" disabled> às
-              <input type="time" class="horario-tarde-fim" disabled>
-            </div>
+          <div class="horario">
+            <label>Tarde:</label>
+            <input type="time" class="horario-tarde-inicio" disabled> às
+            <input type="time" class="horario-tarde-fim" disabled>
           </div>
         </div>
       </div>
 
-      <!-- Limite de Agendamentos por Hora -->
-      <label for="limite-agendamentos">Limite de Agendamentos por Hora:</label>
-      <input type="number" id="limite-agendamentos" min="1" value="1" required>
+      <!-- Terça-feira -->
+      <div class="dia">
+        <label><input type="checkbox" class="dia-checkbox" value="terca"> Terça-feira</label>
+        <div class="horarios-expandidos" style="display: none;">
+          <div class="horario">
+            <label>Manhã:</label>
+            <input type="time" class="horario-manha-inicio" disabled> às
+            <input type="time" class="horario-manha-fim" disabled>
+          </div>
+
+          <div class="horario">
+            <label>Tarde:</label>
+            <input type="time" class="horario-tarde-inicio" disabled> às
+            <input type="time" class="horario-tarde-fim" disabled>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quarta-feira -->
+      <div class="dia">
+        <label><input type="checkbox" class="dia-checkbox" value="quarta"> Quarta-feira</label>
+        <div class="horarios-expandidos" style="display: none;">
+          <div class="horario">
+            <label>Manhã:</label>
+            <input type="time" class="horario-manha-inicio" disabled> às
+            <input type="time" class="horario-manha-fim" disabled>
+          </div>
+
+          <div class="horario">
+            <label>Tarde:</label>
+            <input type="time" class="horario-tarde-inicio" disabled> às
+            <input type="time" class="horario-tarde-fim" disabled>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quinta-feira -->
+      <div class="dia">
+        <label><input type="checkbox" class="dia-checkbox" value="quinta"> Quinta-feira</label>
+        <div class="horarios-expandidos" style="display: none;">
+          <div class="horario">
+            <label>Manhã:</label>
+            <input type="time" class="horario-manha-inicio" disabled> às
+            <input type="time" class="horario-manha-fim" disabled>
+          </div>
+
+          <div class="horario">
+            <label>Tarde:</label>
+            <input type="time" class="horario-tarde-inicio" disabled> às
+            <input type="time" class="horario-tarde-fim" disabled>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sexta-feira -->
+      <div class="dia">
+        <label><input type="checkbox" class="dia-checkbox" value="sexta"> Sexta-feira</label>
+        <div class="horarios-expandidos" style="display: none;">
+          <div class="horario">
+            <label>Manhã:</label>
+            <input type="time" class="horario-manha-inicio" disabled> às
+            <input type="time" class="horario-manha-fim" disabled>
+          </div>
+
+          <div class="horario">
+            <label>Tarde:</label>
+            <input type="time" class="horario-tarde-inicio" disabled> às
+            <input type="time" class="horario-tarde-fim" disabled>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sábado -->
+      <div class="dia">
+        <label><input type="checkbox" class="dia-checkbox" value="sabado"> Sábado</label>
+        <div class="horarios-expandidos" style="display: none;">
+          <div class="horario">
+            <label>Manhã:</label>
+            <input type="time" class="horario-manha-inicio" disabled> às
+            <input type="time" class="horario-manha-fim" disabled>
+          </div>
+
+          <div class="horario">
+            <label>Tarde:</label>
+            <input type="time" class="horario-tarde-inicio" disabled> às
+            <input type="time" class="horario-tarde-fim" disabled>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domingo -->
+      <div class="dia">
+        <label><input type="checkbox" class="dia-checkbox" value="domingo"> Domingo</label>
+        <div class="horarios-expandidos" style="display: none;">
+          <div class="horario">
+            <label>Manhã:</label>
+            <input type="time" class="horario-manha-inicio" disabled> às
+            <input type="time" class="horario-manha-fim" disabled>
+          </div>
+
+          <div class="horario">
+            <label>Tarde:</label>
+            <input type="time" class="horario-tarde-inicio" disabled> às
+            <input type="time" class="horario-tarde-fim" disabled>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Limite de Agendamentos por Hora -->
+    <label for="limite-agendamentos">Limite de Agendamentos por Hora:</label>
+    <input type="number" id="limite-agendamentos" min="1" value="1" required>
 
 
 
-      <button type="submit">Salvar Alterações</button>
-    </form>
+    <button type="submit">Salvar Alterações</button>
+  </form>
   </div>
 
   <!-- Modal para cortar a logo -->
