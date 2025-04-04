@@ -113,7 +113,7 @@ header {
     color: #14c555;
     width: 25px;
     height: 25px;
-    margin-left: 50px;
+    margin: 7px;
 }
 
 .modal-content .close:hover {
