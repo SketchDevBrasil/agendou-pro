@@ -22,12 +22,12 @@ firebase emulators:start
 
 
 
+
 npm cache clean --force
 npm run build
 firebase emulators:start
 
-
-Acesse a URL local ex: http://localhost:5000/id-sketch-dev-brasil
+Acesse a URL local ex:  https://agendou.web.app/id-marcos.santos
 
 # Limpar a pasta node_modules
 Remove-Item -Recurse -Force node_modules
