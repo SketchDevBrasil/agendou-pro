@@ -19,7 +19,6 @@ git push --force origin main
 firebase deploy --only hosting
 firebase emulators:start
 
-
 npm cache clean --force
 npm run build
 firebase emulators:start
@@ -58,7 +57,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/privado", (req, res) => {
   res.status(403).send("Acesso negado.");
 });
-
 
 // Rota padrão
 app.get("/", (req, res) => {
