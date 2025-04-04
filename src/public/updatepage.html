@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Editar Página de Atendimento</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
 
 </head>
@@ -18,8 +19,9 @@
 
     <div class="HeaderTop">
       <!-- Logo -->
+      <label for="logo">Logo:<i class="fas fa-pencil-alt edit-icon"></i></label>
       <div class="order-list-left">
-        <label for="logo">Logo:</label>
+        
         <div id="logo-preview" style="display: none;">
           <img id="logo-image" src="#" alt="Pré-visualização da Logo" style="max-width: 100px;">
         </div>
@@ -45,7 +47,7 @@
     </div>
 
 
-    <p id="page-url-preview">Link da página:
+    <p id="page-url-preview">Link de visualisação da página: 
       <a id="page-url">
         https://agendou.web.app/id-
       </a>

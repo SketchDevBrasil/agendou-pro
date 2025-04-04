@@ -13,14 +13,13 @@ para testar localmente
 
 npm cache clean --force
 npm run build
-
 git add .
 git commit -m "nova atualizacão hosting and functions..."
 git push --force origin main
 firebase deploy --only hosting
 firebase emulators:start
 
-Abra o emulador do firebase com
+
 
 
 npm cache clean --force
