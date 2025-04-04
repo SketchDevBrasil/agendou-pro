@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const cidadeInput = document.getElementById('cidade');
   const ruaInput = document.getElementById('rua');
   const cepInput = document.getElementById('cep');
+  const logoInput = document.getElementById('logo');
+  const logoPreview = document.getElementById('logo-preview');
+  const logoImage = document.getElementById('logo-image');
   const limiteAgendamentosInput = document.getElementById('limite-agendamentos');
   const upgradeProContainer = document.getElementById('upgrade-pro-container');
   const tipoFreeCheckbox = document.getElementById('tipo-free');
@@ -25,10 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const pageSelectionModal = document.getElementById('page-selection-modal');
   const closeModalButton = document.getElementById('close-modal-button');
   const pageListContainer = document.getElementById('page-list-container');
-  const logoPreview = document.getElementById('logo-preview');
-  const logoImage = document.getElementById('logo-image');
-  const editIcon = document.querySelector('.edit-icon');
-  const logoInput = document.getElementById('logo');
+
   let cropper;
   let pageId;
 
@@ -259,45 +259,35 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-  // Abre o modal de corte de logo quando clicar na imagem ou no ícone
-
-
-// Clica no input file quando clicar na imagem ou no ícone
-logoImage.addEventListener('click', () => logoInput.click());
-editIcon.addEventListener('click', () => logoInput.click());
-
-if (logoInput) {
-    logoInput.addEventListener('change', (e) => {
+    // Abre o modal de corte de logo
+    if (logoInput) {
+      logoInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                if (logoToCrop) logoToCrop.src = event.target.result;
-                if (logoModal) logoModal.style.display = 'flex';
-                if (cropper) cropper.destroy();
-                if (logoToCrop) {
-                    cropper = new Cropper(logoToCrop, {
-                        aspectRatio: 1,
-                        viewMode: 1,
-                    });
-                }
-                
-                // Mostra a pré-visualização
-                logoImage.src = event.target.result;
-                logoPreview.style.display = 'inline-block';
-            };
-            reader.readAsDataURL(file);
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            if (logoToCrop) logoToCrop.src = event.target.result;
+            if (logoModal) logoModal.style.display = 'flex';
+            if (cropper) cropper.destroy();
+            if (logoToCrop) {
+              cropper = new Cropper(logoToCrop, {
+                aspectRatio: 1,
+                viewMode: 1,
+              });
+            }
+          };
+          reader.readAsDataURL(file);
         }
-    });
-}
+      });
+    }
 
-// Restante do seu código para fechar o modal permanece o mesmo
-if (closeLogoModal) {
-    closeLogoModal.addEventListener('click', () => {
+    // Fecha o modal de corte de logo
+    if (closeLogoModal) {
+      closeLogoModal.addEventListener('click', () => {
         if (logoModal) logoModal.style.display = 'none';
         if (cropper) cropper.destroy();
-    });
-}
+      });
+    }
 
     // Corta a logo e faz o upload
     if (cropLogoButton) {
